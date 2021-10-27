@@ -16,9 +16,16 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="daffc9d0-ec51-4070-b3a7-41a410c250a4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="daffc9d0-ec51-4070-b3a7-41a410c250a4" name="Default Changelist" comment="Initial commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/controllers.json" beforeDir="false" afterPath="$PROJECT_DIR$/assets/controllers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/styles/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/app.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +37,11 @@
     <execution />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
@@ -196,6 +208,9 @@
       <updated>1634837434569</updated>
       <workItem from="1634837436798" duration="3826000" />
       <workItem from="1634841337889" duration="74000" />
+      <workItem from="1635191127080" duration="2312000" />
+      <workItem from="1635357836892" duration="166000" />
+      <workItem from="1635358037261" duration="681000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1634840786219</created>
@@ -239,14 +254,22 @@
     <option name="LAST_COMMIT_MESSAGE" value="Initial commit" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="557" y="168" key="#Plugins" timestamp="1635358005549">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="557" y="168" key="#Plugins/0.0.1920.1040@0.0.1920.1040" timestamp="1635358005549" />
     <state x="591" y="179" width="816" height="620" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1634838696289">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="591" y="179" width="816" height="620" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1634838696289" />
-    <state x="583" y="1" width="1079" height="1037" key="CommitChangelistDialog2" timestamp="1634840785392">
+    <state x="583" y="1" width="1079" height="1037" key="CommitChangelistDialog2" timestamp="1635191522355">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="583" y="1" width="1079" height="1037" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1634840785392" />
+    <state x="583" y="1" width="1079" height="1037" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1635191522355" />
+    <state x="632" y="305" key="EditFileWatcherDialog" timestamp="1635193218160">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="632" y="305" key="EditFileWatcherDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1635193218160" />
     <state x="552" y="249" key="Vcs.Push.Dialog.v2" timestamp="1634841295703">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -255,5 +278,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="777" y="430" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1634840544557" />
+    <state x="628" y="256" width="672" height="678" key="search.everywhere.popup" timestamp="1635358707364">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="628" y="256" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1635358707364" />
   </component>
 </project>
