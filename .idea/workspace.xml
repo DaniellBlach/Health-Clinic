@@ -16,16 +16,7 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="daffc9d0-ec51-4070-b3a7-41a410c250a4" name="Default Changelist" comment=":sparkles: createad user">
-      <change afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Repository/UserRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/app.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/twig.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/twig.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/index/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index/index.html.twig" afterDir="false" />
-    </list>
+    <list default="true" id="daffc9d0-ec51-4070-b3a7-41a410c250a4" name="Default Changelist" comment=":sparkles: createad registration controller, form" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -209,7 +200,7 @@
       <workItem from="1634841337889" duration="74000" />
       <workItem from="1635191127080" duration="2312000" />
       <workItem from="1635357836892" duration="166000" />
-      <workItem from="1635358037261" duration="7865000" />
+      <workItem from="1635358037261" duration="8175000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1634840786219</created>
@@ -232,7 +223,14 @@
       <option name="project" value="LOCAL" />
       <updated>1635359911945</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary=":sparkles: createad user">
+      <created>1635366019332</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1635366019333</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -243,19 +241,7 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="master" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
@@ -266,8 +252,8 @@
     <MESSAGE value="Initial commit" />
     <MESSAGE value=":wrench: :hammer: added bootstrap" />
     <MESSAGE value=":sparkles: Createad homepage" />
-    <MESSAGE value=":sparkles: createad user" />
-    <option name="LAST_COMMIT_MESSAGE" value=":sparkles: createad user" />
+    <MESSAGE value=":sparkles: createad user&#10;:lipstick: changes in base and index htlm file, add style to links" />
+    <option name="LAST_COMMIT_MESSAGE" value=":sparkles: createad user&#10;:lipstick: changes in base and index htlm file, add style to links" />
   </component>
   <component name="WindowStateProjectService">
     <state x="557" y="168" key="#Plugins" timestamp="1635358005549">
@@ -278,22 +264,30 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="591" y="179" width="816" height="620" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1634838696289" />
-    <state x="488" y="39" width="1245" height="960" key="CommitChangelistDialog2" timestamp="1635366007969">
+    <state x="488" y="39" width="1245" height="960" key="CommitChangelistDialog2" timestamp="1635366127255">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="488" y="39" width="1245" height="960" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1635366007969" />
+    <state x="488" y="39" width="1245" height="960" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1635366127255" />
+    <state x="184" y="86" key="DiffContextDialog" timestamp="1635366167324">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="184" y="86" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1635366167324" />
     <state x="632" y="305" key="EditFileWatcherDialog" timestamp="1635193218160">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="632" y="305" key="EditFileWatcherDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1635193218160" />
+    <state x="950" y="426" key="Git.Rebase.Log.Action.NewCommitMessage.Dialog" timestamp="1635366319238">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="950" y="426" key="Git.Rebase.Log.Action.NewCommitMessage.Dialog/0.0.1920.1040@0.0.1920.1040" timestamp="1635366319238" />
     <state x="799" y="164" key="RollbackChangesDialog" timestamp="1635360513280">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="799" y="164" key="RollbackChangesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1635360513280" />
-    <state x="552" y="249" key="Vcs.Push.Dialog.v2" timestamp="1634841295703">
+    <state x="552" y="249" key="Vcs.Push.Dialog.v2" timestamp="1635366198026">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="249" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1634841295703" />
+    <state x="552" y="249" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1635366198026" />
     <state x="777" y="430" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1634840544557">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
