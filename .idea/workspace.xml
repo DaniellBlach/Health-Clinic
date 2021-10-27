@@ -18,14 +18,8 @@
   <component name="ChangeListManager">
     <list default="true" id="daffc9d0-ec51-4070-b3a7-41a410c250a4" name="Default Changelist" comment="Initial commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/controllers.json" beforeDir="false" afterPath="$PROJECT_DIR$/assets/controllers.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/app.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -210,7 +204,7 @@
       <workItem from="1634841337889" duration="74000" />
       <workItem from="1635191127080" duration="2312000" />
       <workItem from="1635357836892" duration="166000" />
-      <workItem from="1635358037261" duration="681000" />
+      <workItem from="1635358037261" duration="1749000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1634840786219</created>
@@ -219,7 +213,14 @@
       <option name="project" value="LOCAL" />
       <updated>1634840786219</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary=":wrench: :hammer: added bootstrap">
+      <created>1635359004592</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1635359004592</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -251,7 +252,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial commit" />
+    <MESSAGE value=":wrench: :hammer: added bootstrap" />
+    <option name="LAST_COMMIT_MESSAGE" value=":wrench: :hammer: added bootstrap" />
   </component>
   <component name="WindowStateProjectService">
     <state x="557" y="168" key="#Plugins" timestamp="1635358005549">
@@ -262,10 +264,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="591" y="179" width="816" height="620" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1634838696289" />
-    <state x="583" y="1" width="1079" height="1037" key="CommitChangelistDialog2" timestamp="1635191522355">
+    <state x="488" y="39" width="1079" height="960" key="CommitChangelistDialog2" timestamp="1635359003215">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="583" y="1" width="1079" height="1037" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1635191522355" />
+    <state x="488" y="39" width="1079" height="960" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1635359003215" />
     <state x="632" y="305" key="EditFileWatcherDialog" timestamp="1635193218160">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -282,5 +284,16 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="628" y="256" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1635358707364" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/src/Controller/IndexController.php</url>
+          <line>4</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
