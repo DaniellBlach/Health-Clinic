@@ -13,6 +13,13 @@
 </head>
 <body>
 <h1><a href="/index" class="link-dark">Przychodnia lekarska</a> </h1>
+{% if is_granted('IS_ANONYMOUS') %}
+<a href="/login"><button class="btn btn-primary">Zaloguj się</button></a>
+<a href="/register"><button class="btn btn-info">Zarejestruj się</button></a>
+{% endif %}
+{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+<a href="/logout"><button class="btn btn-danger">Wyloguj</button></a>
+{% endif %}
 {% block body %}{% endblock %}
 </body>
 </html>
