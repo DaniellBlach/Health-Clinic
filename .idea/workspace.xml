@@ -16,10 +16,7 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="daffc9d0-ec51-4070-b3a7-41a410c250a4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="daffc9d0-ec51-4070-b3a7-41a410c250a4" name="Default Changelist" comment=":sparkles: createad registration controller, form" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,6 +27,11 @@
     <execution />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
@@ -196,6 +198,9 @@
       <updated>1634837434569</updated>
       <workItem from="1634837436798" duration="3826000" />
       <workItem from="1634841337889" duration="74000" />
+      <workItem from="1635191127080" duration="2312000" />
+      <workItem from="1635357836892" duration="166000" />
+      <workItem from="1635358037261" duration="8175000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1634840786219</created>
@@ -204,7 +209,28 @@
       <option name="project" value="LOCAL" />
       <updated>1634840786219</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary=":wrench: :hammer: added bootstrap">
+      <created>1635359004592</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1635359004592</updated>
+    </task>
+    <task id="LOCAL-00003" summary=":sparkles: Createad homepage">
+      <created>1635359911945</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1635359911945</updated>
+    </task>
+    <task id="LOCAL-00004" summary=":sparkles: createad user">
+      <created>1635366019332</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1635366019333</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -215,19 +241,7 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="master" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
@@ -236,24 +250,62 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial commit" />
+    <MESSAGE value=":wrench: :hammer: added bootstrap" />
+    <MESSAGE value=":sparkles: Createad homepage" />
+    <MESSAGE value=":sparkles: createad user&#10;:lipstick: changes in base and index htlm file, add style to links" />
+    <option name="LAST_COMMIT_MESSAGE" value=":sparkles: createad user&#10;:lipstick: changes in base and index htlm file, add style to links" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="557" y="168" key="#Plugins" timestamp="1635358005549">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="557" y="168" key="#Plugins/0.0.1920.1040@0.0.1920.1040" timestamp="1635358005549" />
     <state x="591" y="179" width="816" height="620" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1634838696289">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="591" y="179" width="816" height="620" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1634838696289" />
-    <state x="583" y="1" width="1079" height="1037" key="CommitChangelistDialog2" timestamp="1634840785392">
+    <state x="488" y="39" width="1245" height="960" key="CommitChangelistDialog2" timestamp="1635366127255">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="583" y="1" width="1079" height="1037" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1634840785392" />
-    <state x="552" y="249" key="Vcs.Push.Dialog.v2" timestamp="1634841295703">
+    <state x="488" y="39" width="1245" height="960" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1635366127255" />
+    <state x="184" y="86" key="DiffContextDialog" timestamp="1635366167324">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="249" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1634841295703" />
+    <state x="184" y="86" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1635366167324" />
+    <state x="632" y="305" key="EditFileWatcherDialog" timestamp="1635193218160">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="632" y="305" key="EditFileWatcherDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1635193218160" />
+    <state x="950" y="426" key="Git.Rebase.Log.Action.NewCommitMessage.Dialog" timestamp="1635366319238">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="950" y="426" key="Git.Rebase.Log.Action.NewCommitMessage.Dialog/0.0.1920.1040@0.0.1920.1040" timestamp="1635366319238" />
+    <state x="799" y="164" key="RollbackChangesDialog" timestamp="1635360513280">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="799" y="164" key="RollbackChangesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1635360513280" />
+    <state x="552" y="249" key="Vcs.Push.Dialog.v2" timestamp="1635366198026">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="249" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1635366198026" />
     <state x="777" y="430" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1634840544557">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="777" y="430" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1634840544557" />
+    <state x="628" y="256" width="672" height="678" key="search.everywhere.popup" timestamp="1635358707364">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="628" y="256" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1635358707364" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/src/Controller/IndexController.php</url>
+          <line>4</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
