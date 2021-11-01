@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<div class="container-sm w-25">
+    <h1 >Autoryzacja</h1>
+    {# Authentication errors #}
+    {% if authenticationError %}
+        <p>{{ authenticationError|trans(authenticationErrorData, 'SchebTwoFactorBundle') }}</p>
+    {% endif %}
+
+    <form class="form" action="{{ checkPathUrl ? checkPathUrl: path(checkPathRoute) }}" method="post">
+        <label for="_auth_code">Kod uwirzytelniający</label>
+        <p class="widget">
+            <input
+                    id="_auth_code"
+                    class="form-control"
+                    type="text"
+                    name="{{ authCodeParameterName }}"
+                    autocomplete="one-time-code"
+                    autofocus
+            />
+        </p>
+
+        {% if displayTrustedOption %}
+            <p class="widget"><label for="_trusted"><input id="_trusted" type="checkbox"
+                                                           name="{{ trustedParameterName }}"/> {{ "Używam zaufanego urządzenia"|trans({}, 'SchebTwoFactorBundle') }}
+                </label></p>
+        {% endif %}
+        {% if isCsrfProtectionEnabled %}
+            <input type="hidden" name="{{ csrfParameterName }}" value="{{ csrf_token(csrfTokenId) }}">
+        {% endif %}
+        <p class="submit"><input type="submit" class="btn btn-dark" value="{{ "Zaloguj się"|trans({}, 'SchebTwoFactorBundle') }}"/></p>
+    </form>
+
+    <p class="cancel"><a href="{{ logoutPath }}">{{ "Wróć na stronę główną"|trans({}, 'SchebTwoFactorBundle') }}</a></p>
+</div>
+{% endblock %}
