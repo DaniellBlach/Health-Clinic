@@ -43,6 +43,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
      */
     private $authCode;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Patient::class, mappedBy="userid", cascade={"persist", "remove"})
+     *  @ORM\JoinColumn(nullable=true)
+     */
+    private $patientid;
+
 
     public function getId(): ?int
     {
@@ -155,5 +161,22 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
     public function setEmailAuthCode(string $authCode): void
     {
         $this->authCode = $authCode;
+    }
+
+    public function getPatientid(): ?Patient
+    {
+        return $this->patientid;
+    }
+
+    public function setPatientid(Patient $patientid): self
+    {
+        // set the owning side of the relation if necessary
+        if ($patientid->getUserid() !== $this) {
+            $patientid->setUserid($this);
+        }
+
+        $this->patientid = $patientid;
+
+        return $this;
     }
 }
