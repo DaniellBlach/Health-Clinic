@@ -41,9 +41,9 @@ class PatientType extends AbstractType
                 'label' => 'Płeć',
                 'attr' => ['class' => 'form-control'],
                 'choices' => [
-                    'Mężczyzna' => 'mężczyzna',
-                    'Kobieta' => 'kobieta',
-                    'Inne' => 'inne'
+                    'Mężczyzna' => 'male',
+                    'Kobieta' => 'female',
+                    'Inne' => 'other'
                 ]
             ])
             ->add('phoneNumber',null,[
