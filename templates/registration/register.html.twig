@@ -6,15 +6,18 @@
     <div class="container-sm w-25">
         <h1>Rejestracja</h1>
         {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email,{
-            label:'E-mail',
-            'attr': {'class': 'form-control'}
-        }) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Hasło',
-            'attr': {'class': 'form-control'}
-        }) }}
+        {{ form_row(registrationForm.email) }}
+        {{ form_row(registrationForm.plainPassword) }}
+        {{ form_rest(registrationForm) }}
+        {{ form_start(patientForm) }}
+        {{ form_row(patientForm.name) }}
+        {{ form_row(patientForm.surname) }}
+        {{ form_row(patientForm.pesel) }}
+        {{ form_row(patientForm.sex) }}
+        {{ form_row(patientForm.dateOfBirth) }}
+        {{ form_row(patientForm.phoneNumber) }}
         <button type="submit" class="btn btn-dark mt-2">Zarejestruj się</button>
+        {{ form_end(patientForm) }}
         {{ form_end(registrationForm) }}
     </div>
 {% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edycja danych pacjenta{% endblock %}
+
+{% block body %}
+    <div class="container-sm w-25">
+        <h1 class="text-center">Edytuj dane</h1>
+        {{ form_start(form) }}
+        {{ form_row((form.name)) }}
+        {{ form_row((form.surname)) }}
+        {{ form_row((form.pesel)) }}
+        {{ form_row((form.dateOfBirth)) }}
+        {{ form_row(form.sex) }}
+        {{ form_row(form.phoneNumber) }}
+        <button type="submit" class="btn btn-primary">Zapisz</button>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
