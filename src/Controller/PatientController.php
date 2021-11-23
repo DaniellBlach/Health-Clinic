@@ -35,7 +35,7 @@ class PatientController extends AbstractController
     }
     /**
      *
-     * @Route("/patient/{patient}/patient", name="patient_edit")
+     * @Route("/patient/{patient}/edit", name="patient_edit")
      * @param Request $request
      * @param Patient $patient
      * @return Response
