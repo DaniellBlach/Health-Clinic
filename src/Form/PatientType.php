@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Patient;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Length;
@@ -15,29 +16,33 @@ class PatientType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name',null,[
+            ->add('name', null, [
                 'label' => 'Imię',
                 'attr' => ['class' => 'form-control'],
             ])
-            ->add('surname',null,[
+            ->add('surname', null, [
                 'label' => 'Nazwisko',
                 'attr' => ['class' => 'form-control'],
             ])
-            ->add('pesel',null,[
+            ->add('pesel', null, [
                 'label' => 'Pesel',
                 'attr' => ['class' => 'form-control'],
                 'constraints' => [
                     new Length([
                         'min' => 11,
                         'minMessage' => 'Podaj poprawny numer pesel',
-                        'max'=>11,
+                        'max' => 11,
                     ]),
                 ],
             ])
-            ->add('dateOfBirth',null,[
+            ->add('dateOfBirth', DateType::class, [
                 'label' => 'Data urodzin',
+                'widget' => 'single_text',
+                'attr' => [
+                    'class' => 'form-control birthPicker bg-white'
+                ],
             ])
-            ->add('sex',ChoiceType::class,[
+            ->add('sex', ChoiceType::class, [
                 'label' => 'Płeć',
                 'attr' => ['class' => 'form-control'],
                 'choices' => [
@@ -46,7 +51,7 @@ class PatientType extends AbstractType
                     'Inne' => 'inne'
                 ]
             ])
-            ->add('phoneNumber',null,[
+            ->add('phoneNumber', null, [
                 'label' => 'Numer telefonu',
                 'attr' => ['class' => 'form-control'],
                 'constraints' => [
@@ -55,8 +60,7 @@ class PatientType extends AbstractType
                         'minMessage' => 'Podaj poprawny numer telefonu',
                     ]),
                 ],
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

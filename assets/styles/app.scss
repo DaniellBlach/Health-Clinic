@@ -1,6 +1,9 @@
 @import "~bootstrap/scss/bootstrap";
-body{
-  a{
+@import "~flatpickr/dist/flatpickr.css";
+@import "~flatpickr/dist/themes/dark.css";
+
+body {
+  a {
     text-decoration: none;
   }
 }

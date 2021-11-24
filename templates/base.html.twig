@@ -12,14 +12,31 @@
     {% endblock %}
 </head>
 <body>
-<h1><a href="/index" class="link-dark">Przychodnia lekarska</a> </h1>
+<h1><a href="{{ path('index') }}" class="link-dark">Przychodnia lekarska</a></h1>
 {% if is_granted('IS_ANONYMOUS') %}
-<a href="/login"><button class="btn btn-primary">Zaloguj się</button></a>
-<a href="/register"><button class="btn btn-info">Zarejestruj się</button></a>
+    <a href="{{ path('app_login') }}">
+        <button class="btn btn-primary">Zaloguj się</button>
+    </a>
+    <a href="{{ path('register') }}">
+        <button class="btn btn-info">Zarejestruj się</button>
+    </a>
 {% endif %}
-{% if is_granted('IS_AUTHENTICATED_FULLY') %}
-    <a href="/patient"><button class="btn btn-primary">Dane Pacjenta</button></a>
-<a href="/logout"><button class="btn btn-danger">Wyloguj</button></a>
+{% if is_granted('IS_AUTHENTICATED_FULLY') and is_granted('ROLE_USER') %}
+    {% if is_granted('ROLE_ADMIN') %}
+        <a href="{{ path('patients') }}">
+            <button class="btn btn-primary">Pacjenci</button>
+        </a>
+    {% else %}
+        <a href="{{ path('patient') }}">
+            <button class="btn btn-primary">Dane Pacjenta</button>
+        </a>
+    {% endif %}
+    <a href="{{ path('change_password') }}">
+        <button class="btn btn-primary">Zmień hasło</button>
+    </a>
+    <a href="{{ path('app_logout') }}">
+        <button class="btn btn-danger">Wyloguj</button>
+    </a>
 {% endif %}
 {% block body %}{% endblock %}
 </body>

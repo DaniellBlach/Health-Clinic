@@ -45,7 +45,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
 
     /**
      * @ORM\OneToOne(targetEntity=Patient::class, mappedBy="userid", cascade={"persist", "remove"})
-     *  @ORM\JoinColumn(nullable=true)
+     *  @ORM\JoinColumn(nullable=true,onDelete="CASCADE")
      */
     private $patientid;
 
