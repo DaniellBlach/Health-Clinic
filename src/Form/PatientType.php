@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Patient;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Length;
@@ -34,8 +35,12 @@ class PatientType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('dateOfBirth',null,[
+            ->add('dateOfBirth',DateType::class,[
                 'label' => 'Data urodzin',
+                'widget' => 'single_text',
+                'attr' => [
+                    'class' => 'form-control birthPicker bg-white'
+                ],
             ])
             ->add('sex',ChoiceType::class,[
                 'label' => 'Płeć',
