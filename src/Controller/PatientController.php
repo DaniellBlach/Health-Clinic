@@ -17,10 +17,12 @@ use Symfony\Component\Security\Core\Security;
 class PatientController extends AbstractController
 {
     private $security;
+
     public function __construct(Security $security)
     {
         $this->security = $security;
     }
+
     /**
      * @Route("/patient", name="patient")
      */
@@ -28,11 +30,12 @@ class PatientController extends AbstractController
     {
         $user = $this->security->getUser();
 
-        $repository=$this->getDoctrine()->getRepository(Patient::class);
+        $repository = $this->getDoctrine()->getRepository(Patient::class);
         return $this->render('patient/index.html.twig', [
-            'patient'=>$repository->find($user)
+            'patient' => $repository->find($user)
         ]);
     }
+
     /**
      *
      * @Route("/patient/{patient}/edit", name="patient_edit")
@@ -50,10 +53,9 @@ class PatientController extends AbstractController
             $entityManager->flush();
             $this->addFlash('success', 'Pomyślnie zmieniono dane');
             $hasAccess = $this->isGranted('ROLE_ADMIN');
-            if($hasAccess) {
+            if ($hasAccess) {
                 return $this->redirectToRoute('patients');
-            }
-            else{
+            } else {
                 return $this->redirectToRoute('patient');
             }
 
@@ -63,6 +65,7 @@ class PatientController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
     /**
      *
      * @Route("/patients", name="patients")
@@ -72,9 +75,9 @@ class PatientController extends AbstractController
      */
     public function allPatients(Request $request): Response
     {
-        $repository=$this->getDoctrine()->getRepository(Patient::class);
+        $repository = $this->getDoctrine()->getRepository(Patient::class);
         return $this->render('patient/patients.html.twig', [
-            'patients'=>$repository->findall()
+            'patients' => $repository->findall()
         ]);
     }
 }

@@ -27,7 +27,9 @@
                         <td>{{ patient.sex }}</td>
                         <td>{{ patient.dateOfBirth|date("d/m/Y") }}</td>
                         <td>{{ patient.phoneNumber }}</td>
-                        <td><a href="{{ path('patient_edit',{patient: patient.id}) }}"><button class="btn btn-danger">Edytuj dane</button></a></td>
+                        <td><a href="{{ path('patient_edit',{patient: patient.id}) }}">
+                                <button class="btn btn-danger">Edytuj dane</button>
+                            </a></td>
                     </tr>
                 {% endfor %}
                 </tbody>

@@ -15,20 +15,20 @@ use Symfony\Component\Routing\Annotation\Route;
 class RegistrationController extends AbstractController
 {
     /**
-     * @Route("/register", name="app_register")
+     * @Route("/register", name="register")
      */
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasherInterface): Response
     {
         $user = new User();
         $patient = new Patient();
         $form = $this->createForm(RegistrationFormType::class, $user);
-        $formPatient=$this->createForm(PatientType::class,$patient);
+        $formPatient = $this->createForm(PatientType::class, $patient);
         $form->handleRequest($request);
         $formPatient->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()&&$formPatient->isSubmitted() && $formPatient->isValid()) {
-            // encode the plain password
+        if ($form->isSubmitted() && $form->isValid() && $formPatient->isSubmitted() && $formPatient->isValid()) {
+
             $user->setPassword(
-            $userPasswordHasherInterface->hashPassword(
+                $userPasswordHasherInterface->hashPassword(
                     $user,
                     $form->get('plainPassword')->getData()
                 )
@@ -39,14 +39,13 @@ class RegistrationController extends AbstractController
             $entityManager->persist($user);
             $entityManager->persist($patient);
             $entityManager->flush();
-            // do anything else you need here, like send an email
 
             return $this->redirectToRoute('app_login');
         }
 
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
-            'patientForm'=>$formPatient->createView(),
+            'patientForm' => $formPatient->createView(),
         ]);
     }
 }
