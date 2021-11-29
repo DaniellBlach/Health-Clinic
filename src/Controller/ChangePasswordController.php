@@ -57,6 +57,7 @@ class ChangePasswordController extends AbstractController
             );
             $entityManager->persist($user);
             $entityManager->flush();
+            $this->addFlash('success', 'Pomyślnie zmieniono dane');
             return $this->redirectToRoute('index');
         }
         return $this->render('change_password/index.html.twig', [

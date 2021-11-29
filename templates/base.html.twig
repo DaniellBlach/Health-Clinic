@@ -37,6 +37,11 @@
     <a href="{{ path('app_logout') }}">
         <button class="btn btn-danger">Wyloguj</button>
     </a>
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
 {% endif %}
 {% block body %}{% endblock %}
 </body>
