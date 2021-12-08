@@ -39,10 +39,12 @@ class UserFixtures extends Fixture
     private function getUsersData()
     {
         return [
-            ['dandys9987@gmail.com', 'ROLE_ADMIN', 'admin123'],
-            ['daniel.blach@edu.uekat.pl', 'ROLE_USER', 'admin123'],
-            ['pacjent1@klinika.pl', 'ROLE_USER', 'admin123'],
-            ['pacjent2@klinika.pl', 'ROLE_USER', 'admin123'],
+            ['admin@klinika.com', 'ROLE_ADMIN', 'admin123'],
+            ['pacjent1@klinika.pl', 'ROLE_PATIENT', 'admin123'],
+            ['pacjent2@klinika.pl', 'ROLE_PATIENT', 'admin123'],
+            ['pacjent3@klinika.pl', 'ROLE_PATIENT', 'admin123'],
+            ['pracownik1@klinika.pl', 'ROLE_EMPLOYEE', 'admin123'],
+            ['pracownik2@klinika.pl', 'ROLE_EMPLOYEE', 'admin123'],
         ];
     }
 
