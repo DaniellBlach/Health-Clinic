@@ -49,6 +49,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
      */
     private $patientid;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Employee::class, mappedBy="userid", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=true,onDelete="CASCADE")
+     */
+    private $employeeid;
+
 
     public function getId(): ?int
     {
@@ -176,6 +182,23 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
         }
 
         $this->patientid = $patientid;
+
+        return $this;
+    }
+
+    public function getEmployeeid(): ?Employee
+    {
+        return $this->employeeid;
+    }
+
+    public function setEmployeeid(Employee $employeeid): self
+    {
+        // set the owning side of the relation if necessary
+        if ($employeeid->getUserid() !== $this) {
+            $employeeid->setUserid($this);
+        }
+
+        $this->employeeid = $employeeid;
 
         return $this;
     }
