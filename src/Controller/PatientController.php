@@ -52,8 +52,7 @@ class PatientController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->flush();
             $this->addFlash('success', 'Pomyślnie zmieniono dane');
-            $hasAccess = $this->isGranted('ROLE_ADMIN');
-            if ($hasAccess) {
+            if ($this->isGranted('ROLE_ADMIN') or $this->isGranted('ROLE_EMPLOYEE')) {
                 return $this->redirectToRoute('patients');
             } else {
                 return $this->redirectToRoute('patient');
@@ -69,7 +68,6 @@ class PatientController extends AbstractController
     /**
      *
      * @Route("/patients", name="patients")
-     * @IsGranted("ROLE_ADMIN")
      * @param Request $request
      * @return Response
      */
