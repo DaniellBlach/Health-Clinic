@@ -32,7 +32,7 @@ class PatientController extends AbstractController
 
         $repository = $this->getDoctrine()->getRepository(Patient::class);
         return $this->render('patient/index.html.twig', [
-            'patient' => $repository->find($user)
+            'patient' => $repository->find($user->getpatientid())
         ]);
     }
 
