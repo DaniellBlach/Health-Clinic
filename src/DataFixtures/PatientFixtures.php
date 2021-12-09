@@ -16,7 +16,7 @@ class PatientFixtures extends Fixture implements DependentFixtureInterface
     }
     private function loadPatients(ObjectManager $manager)
     {
-        $i = 1;
+        $i = 0;
         foreach ($this->getPatientsData() as [$name, $surname, $pesel, $date_of_birth, $sex, $phone_number]) {
             $patient = new Patient();
             $patient
