@@ -15,7 +15,7 @@ class EmployeeFixtures extends Fixture implements DependentFixtureInterface
     }
     private function loadPatients(ObjectManager $manager)
     {
-        $i = 4;
+        $i = 3;
         foreach ($this->getEmployeeData() as [$name, $surname]) {
             $employee = new Employee();
             $employee
