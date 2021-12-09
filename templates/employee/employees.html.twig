@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pracownicy{% endblock %}
+
+{% block body %}
+    <div class="example-wrapper">
+        <div class="container-sm w-75">
+            <h1 class="text-center">Pracownicy</h1>
+            <table class="table table-dark">
+                <thead>
+                <tr>
+                    <th scope="col">Imię</th>
+                    <th scope="col">Nazwisko</th>
+                    <th scope="col">Rola</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for employee in employees %}
+                    <tr>
+                        <td>{{ employee.name }}</td>
+                        <td>{{ employee.surname }}</td>
+                        {% if employee.userid.roles[0]=="ROLE_EMPLOYEE" %}
+                        <td>Pracownik administracyjny</td>
+                         {% else %}
+                             <td>Administrator systemu</td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

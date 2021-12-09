@@ -44,7 +44,7 @@ class EmployeeController extends AbstractController
         $employee = new Employee();
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
-        $formEmployee = $this->createForm(EmployeeType::class,$employee);
+        $formEmployee = $this->createForm(EmployeeType::class, $employee);
         $form->handleRequest($request);
         $formEmployee->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid() && $formEmployee->isSubmitted() && $formEmployee->isValid()) {
@@ -61,11 +61,25 @@ class EmployeeController extends AbstractController
             $entityManager->persist($user);
             $entityManager->persist($employee);
             $entityManager->flush();
+            $this->addFlash('success', 'Pomyślnie dodano pracownika');
             return $this->redirectToRoute('index');
         }
         return $this->render('employee/add.html.twig', [
             'registrationForm' => $form->createView(),
-            'employeeForm'=>$formEmployee->createView(),
+            'employeeForm' => $formEmployee->createView(),
+        ]);
+    }
+    /**
+     *
+     * @Route("/employees", name="employees")
+     * @param Request $request
+     * @return Response
+     */
+    public function allPatients(Request $request): Response
+    {
+        $repository = $this->getDoctrine()->getRepository(Employee::class);
+        return $this->render('employee/employees.html.twig', [
+            'employees' => $repository->findall()
         ]);
     }
 }
