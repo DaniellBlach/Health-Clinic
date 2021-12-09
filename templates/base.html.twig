@@ -22,13 +22,25 @@
     </a>
 {% endif %}
 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-    {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_EMPLOYEE') %}
+    {% if is_granted('ROLE_ADMIN') %}
         <a href="{{ path('patients') }}">
             <button class="btn btn-primary">Pacjenci</button>
         </a>
-    {% else %}
+        <a href="{{ path('employees') }}">
+            <button class="btn btn-primary">Pracownicy</button>
+        </a>
+        <a href="{{ path('employee') }}">
+            <button class="btn btn-primary">Moje Dane</button>
+        </a>
+    {% endif %}
+    {% if is_granted('ROLE_EMPLOYEE') %}
+        <a href="{{ path('employee') }}">
+            <button class="btn btn-primary">Moje Dane</button>
+        </a>
+    {% endif %}
+    {% if is_granted('ROLE_PATIENT') %}
         <a href="{{ path('patient') }}">
-            <button class="btn btn-primary">Dane Pacjenta</button>
+            <button class="btn btn-primary">Moje Dane</button>
         </a>
     {% endif %}
     <a href="{{ path('change_password') }}">
