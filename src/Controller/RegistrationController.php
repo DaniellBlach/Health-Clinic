@@ -5,7 +5,7 @@ namespace App\Controller;
 use App\Entity\Patient;
 use App\Entity\User;
 use App\Form\PatientType;
-use App\Form\RegistrationFormType;
+use App\Form\UserType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,7 +21,7 @@ class RegistrationController extends AbstractController
     {
         $user = new User();
         $patient = new Patient();
-        $form = $this->createForm(RegistrationFormType::class, $user);
+        $form = $this->createForm(UserType::class, $user);
         $formPatient = $this->createForm(PatientType::class, $patient);
         $form->handleRequest($request);
         $formPatient->handleRequest($request);
@@ -33,6 +33,7 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
+            $user->setRoles(["ROLE_PATIENT"]);
             $patient->setUserid($user);
             $user->setPatientid($patient);
             $entityManager = $this->getDoctrine()->getManager();

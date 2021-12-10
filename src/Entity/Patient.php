@@ -50,7 +50,7 @@ class Patient
 
     /**
      * @ORM\OneToOne(targetEntity=user::class, inversedBy="patientid", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=true,onDelete="CASCADE")
+     * @ORM\JoinColumn(nullable=false,onDelete="CASCADE")
      */
     private $userid;
 

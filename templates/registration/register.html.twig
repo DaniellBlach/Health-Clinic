@@ -7,6 +7,7 @@
         <h1>Rejestracja</h1>
         {{ form_start(registrationForm) }}
         {{ form_row(registrationForm.email) }}
+        {% do registrationForm.roles.setRendered() %}
         {{ form_row(registrationForm.plainPassword) }}
         {{ form_rest(registrationForm) }}
         {{ form_start(patientForm) }}
@@ -16,7 +17,7 @@
         {{ form_row(patientForm.sex) }}
         {{ form_row(patientForm.dateOfBirth) }}
         {{ form_row(patientForm.phoneNumber) }}
-        <button type="submit" class="btn btn-dark mt-2">Zarejestruj się</button>
+        <button type="submit" class="btn btn-dark mt-2">Zarejestruj się </button>
         {{ form_end(patientForm) }}
         {{ form_end(registrationForm) }}
     </div>

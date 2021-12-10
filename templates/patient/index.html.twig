@@ -33,7 +33,8 @@
                     <td>{{ patient.phoneNumber }}</td>
                 </tr>
                 <tr>
-                    <td colspan="2" class="text-center"><a href="{{ path('patient_edit',{patient: patient.id}) }}"><button class="btn btn-danger">Edytuj dane</button></a></td>
+                    <td colspan="1" class="text-center"><a href="{{ path('patient_edit',{patient: patient.id}) }}"><button class="btn btn-danger">Edytuj dane</button></a></td>
+                    <td colspan="1" class="text-center"><a href="{{ path('change_password') }}"><button class="btn btn-danger">Zmień hasło</button></a></td>
                 </tr>
                 </tbody>
             </table>
