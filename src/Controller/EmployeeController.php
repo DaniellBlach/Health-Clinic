@@ -5,7 +5,7 @@ namespace App\Controller;
 use App\Entity\Employee;
 use App\Entity\User;
 use App\Form\EmployeeType;
-use App\Form\RegistrationFormType;
+use App\Form\UserType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -43,7 +43,7 @@ class EmployeeController extends AbstractController
     {
         $employee = new Employee();
         $user = new User();
-        $form = $this->createForm(RegistrationFormType::class, $user);
+        $form = $this->createForm(UserType::class, $user);
         $formEmployee = $this->createForm(EmployeeType::class, $employee);
         $form->handleRequest($request);
         $formEmployee->handleRequest($request);
