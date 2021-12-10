@@ -69,9 +69,10 @@ class EmployeeController extends AbstractController
             'employeeForm' => $formEmployee->createView(),
         ]);
     }
+
     /**
-     *
      * @Route("/employees", name="employees")
+     * @IsGranted("ROLE_ADMIN")
      * @param Request $request
      * @return Response
      */
@@ -80,6 +81,27 @@ class EmployeeController extends AbstractController
         $repository = $this->getDoctrine()->getRepository(Employee::class);
         return $this->render('employee/employees.html.twig', [
             'employees' => $repository->findall()
+        ]);
+    }
+
+    /**
+     * @Route("/employees/{employee}/edit", name="employee_edit")
+     * @param Request $request
+     * @param Employee $employee
+     * @return Response
+     */
+    public function edit(Request $request, Employee $employee): Response
+    {
+        $form = $this->createForm(EmployeeType::class, $employee);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->flush();
+            $this->addFlash('success', 'Pomyślnie zmieniono dane');
+            return $this->redirectToRoute('employees');
+        }
+        return $this->render('employee/edit.html.twig', [
+            'form' => $form->createView(),
         ]);
     }
 }
