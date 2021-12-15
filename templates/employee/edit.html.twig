@@ -5,10 +5,25 @@
 {% block body %}
     <div class="container-sm w-25">
         <h1 class="text-center">Edytuj dane</h1>
-        {{ form_start(form) }}
-        {{ form_row((form.name)) }}
-        {{ form_row((form.surname)) }}
-        <button type="submit" class="btn btn-primary">Zapisz</button>
-        {{ form_end(form) }}
+        {% if employee.doctor!=null %}
+            {{ form_start(form) }}
+            {{ form_start(doctorForm) }}
+            {{ form_row((form.name)) }}
+            {{ form_row((form.surname)) }}
+            {{ form_row((doctorForm.specialization)) }}
+            {{ form_row((doctorForm.licenseNumber)) }}
+            {{ form_rest(form) }}
+            {{ form_rest(doctorForm) }}
+            <button type="submit" class="btn btn-primary">Zapisz</button>
+            {{ form_end(doctorForm) }}
+            {{ form_end(form) }}
+        {% else %}
+            {{ form_start(form) }}
+            {{ form_row((form.name)) }}
+            {{ form_row((form.surname)) }}
+            {{ form_rest(form) }}
+            <button type="submit" class="btn btn-primary">Zapisz</button>
+            {{ form_end(form) }}
+        {% endif %}
     </div>
 {% endblock %}
