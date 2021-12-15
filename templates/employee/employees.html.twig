@@ -12,7 +12,9 @@
                     <th scope="col">Imię</th>
                     <th scope="col">Nazwisko</th>
                     <th scope="col">Rola</th>
-                    <th scope="col">Rola</th>
+                    <th scope="col">Specializacja</th>
+                    <th scope="col">Numer prawa wykonywania zawodu</th>
+                    <th scope="col">Operacje</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -22,10 +24,16 @@
                         <td>{{ employee.surname }}</td>
                         {% if employee.user.roles[0]=="ROLE_EMPLOYEE" %}
                             <td>Pracownik administracyjny</td>
+                            <td>-</td>
+                            <td>-</td>
                         {% elseif  employee.user.roles[0]=="ROLE_DOCTOR" %}
                             <td>Lekarz</td>
+                            <td>{{ employee.doctor.specialization }}</td>
+                            <td>{{ employee.doctor.licenseNumber }}</td>
                         {% else %}
                             <td>Administrator systemu</td>
+                            <td>-</td>
+                            <td>-</td>
                         {% endif %}
                         <td><a href="{{ path('employee_edit',{employee: employee.id}) }}">
                                 <button class="btn btn-danger">Edytuj dane</button>
