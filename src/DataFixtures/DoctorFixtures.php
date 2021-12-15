@@ -15,7 +15,7 @@ class DoctorFixtures extends Fixture implements DependentFixtureInterface
     }
     private function loadDoctors(ObjectManager $manager)
     {
-        $i = 2;
+        $i = 3;
         foreach ($this->getDoctorData() as [$specialization, $licenceNumber]) {
             $doctor=new Doctor();
             $doctor
