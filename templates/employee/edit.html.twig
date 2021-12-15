@@ -8,7 +8,18 @@
         {{ form_start(form) }}
         {{ form_row((form.name)) }}
         {{ form_row((form.surname)) }}
-        <button type="submit" class="btn btn-primary">Zapisz</button>
-        {{ form_end(form) }}
+        {{ form_rest(form) }}
+        {% if employee.doctor!=null %}
+            {{ form_start(doctorForm) }}
+            {{ form_row((doctorForm.specialization)) }}
+            {{ form_row((doctorForm.licenseNumber)) }}
+            {{ form_rest(doctorForm) }}
+            <button type="submit" class="btn btn-primary">Zapisz</button>
+            {{ form_end(doctorForm) }}
+            {{ form_end(form) }}
+        {% else %}
+            <button type="submit" class="btn btn-primary">Zapisz</button>
+            {{ form_end(form) }}
+        {% endif %}
     </div>
 {% endblock %}

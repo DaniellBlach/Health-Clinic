@@ -49,10 +49,10 @@ class Patient
     private $phoneNumber;
 
     /**
-     * @ORM\OneToOne(targetEntity=user::class, inversedBy="patientid", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=user::class, inversedBy="patient", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false,onDelete="CASCADE")
      */
-    private $userid;
+    private $user;
 
     public function getId(): ?int
     {
@@ -131,14 +131,14 @@ class Patient
         return $this;
     }
 
-    public function getUserid(): ?user
+    public function getUser(): ?user
     {
-        return $this->userid;
+        return $this->user;
     }
 
-    public function setUserid(user $userid): self
+    public function setUser(user $user): self
     {
-        $this->userid = $userid;
+        $this->user = $user;
 
         return $this;
     }

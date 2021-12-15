@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dodaj lekarza{% endblock %}
+
+{% block body %}
+    <div class="container-sm w-25">
+        <h1>Dodaj Lekarza</h1>
+        {{ form_start(registrationForm) }}
+        {{ form_row(registrationForm.email) }}
+        {{ form_row(registrationForm.plainPassword) }}
+        {% do registrationForm.roles.setRendered() %}
+        {{ form_start(employeeForm) }}
+        {{ form_row(employeeForm.name) }}
+        {{ form_row(employeeForm.surname) }}
+        {{ form_rest(registrationForm) }}
+        {{ form_start(doctorForm) }}
+        {{ form_rest(doctorForm) }}
+        <button type="submit" class="btn btn-dark mt-2">Dodaj Lekarza</button>
+        {{ form_end(employeeForm) }}
+        {{ form_end(registrationForm) }}
+        {{ form_end(doctorForm) }}
+    </div>
+{% endblock %}

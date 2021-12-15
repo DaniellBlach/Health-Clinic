@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Employee;
 use App\Entity\User;
+use App\Form\DoctorType;
 use App\Form\EmployeeType;
 use App\Form\UserType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -31,7 +32,7 @@ class EmployeeController extends AbstractController
         $user = $this->security->getUser();
         $repository = $this->getDoctrine()->getRepository(Employee::class);
         return $this->render('employee/index.html.twig', [
-            'employee' => $repository->find($user->getemployeeid())
+            'employee' => $repository->find($user->getemployee())
         ]);
     }
 
@@ -55,8 +56,8 @@ class EmployeeController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
-            $employee->setUserid($user);
-            $user->setEmployeeid($employee);
+            $employee->setUser($user);
+            $user->setEmployee($employee);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->persist($employee);
@@ -94,14 +95,32 @@ class EmployeeController extends AbstractController
     {
         $form = $this->createForm(EmployeeType::class, $employee);
         $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->flush();
-            $this->addFlash('success', 'Pomyślnie zmieniono dane');
-            return $this->redirectToRoute('employees');
+        if ($employee->getDoctor() != null) {
+            $doctor = $employee->getDoctor();
+            $doctorForm = $this->createForm(DoctorType::class, $doctor);
+            $doctorForm->handleRequest($request);
+            if ($form->isSubmitted() && $form->isValid() && $doctorForm->isValid() && $doctorForm->isSubmitted()) {
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->flush();
+                $this->addFlash('success', 'Pomyślnie zmieniono dane');
+                return $this->redirectToRoute('employees');
+            }
+            return $this->render('employee/edit.html.twig', [
+                'form' => $form->createView(),
+                'employee' => $employee,
+                'doctorForm' => $doctorForm->createView(),
+            ]);
+        } else {
+            if ($form->isSubmitted() && $form->isValid()) {
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->flush();
+                $this->addFlash('success', 'Pomyślnie zmieniono dane');
+                return $this->redirectToRoute('employees');
+            }
+            return $this->render('employee/edit.html.twig', [
+                'form' => $form->createView(),
+                'employee' => $employee,
+            ]);
         }
-        return $this->render('employee/edit.html.twig', [
-            'form' => $form->createView(),
-        ]);
     }
 }

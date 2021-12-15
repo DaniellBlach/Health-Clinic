@@ -44,16 +44,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
     private $authCode;
 
     /**
-     * @ORM\OneToOne(targetEntity=Patient::class, mappedBy="userid", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=Patient::class, mappedBy="user", cascade={"persist", "remove"})
      *  @ORM\JoinColumn(nullable=true,onDelete="CASCADE")
      */
-    private $patientid;
+    private $patient;
 
     /**
-     * @ORM\OneToOne(targetEntity=Employee::class, mappedBy="userid", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=Employee::class, mappedBy="user", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=true,onDelete="CASCADE")
      */
-    private $employeeid;
+    private $employee;
 
 
     public function getId(): ?int
@@ -169,36 +169,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
         $this->authCode = $authCode;
     }
 
-    public function getPatientid(): ?Patient
+    public function getPatient(): ?Patient
     {
-        return $this->patientid;
+        return $this->patient;
     }
 
-    public function setPatientid(Patient $patientid): self
+    public function setPatient(Patient $patient): self
     {
         // set the owning side of the relation if necessary
-        if ($patientid->getUserid() !== $this) {
-            $patientid->setUserid($this);
+        if ($patient->getUser() !== $this) {
+            $patient->setUser($this);
         }
 
-        $this->patientid = $patientid;
+        $this->patient = $patient;
 
         return $this;
     }
 
-    public function getEmployeeid(): ?Employee
+    public function getEmployee(): ?Employee
     {
-        return $this->employeeid;
+        return $this->employee;
     }
 
-    public function setEmployeeid(Employee $employeeid): self
+    public function setEmployee(Employee $employee): self
     {
         // set the owning side of the relation if necessary
-        if ($employeeid->getUserid() !== $this) {
-            $employeeid->setUserid($this);
+        if ($employee->getUser() !== $this) {
+            $employee->setUser($this);
         }
 
-        $this->employeeid = $employeeid;
+        $this->employee = $employee;
 
         return $this;
     }

@@ -28,10 +28,16 @@ class Employee
     private $surname;
 
     /**
-     * @ORM\OneToOne(targetEntity=user::class, inversedBy="employeeid", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=user::class, inversedBy="employee", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false,onDelete="CASCADE")
      */
-    private $userid;
+    private $user;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Doctor::class, mappedBy="employee", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=true,onDelete="CASCADE")
+     */
+    private $doctor;
 
     public function getId(): ?int
     {
@@ -62,14 +68,31 @@ class Employee
         return $this;
     }
 
-    public function getUserid(): ?user
+    public function getUser(): ?user
     {
-        return $this->userid;
+        return $this->user;
     }
 
-    public function setUserid(user $userid): self
+    public function setUser(user $user): self
     {
-        $this->userid = $userid;
+        $this->user = $user;
+
+        return $this;
+    }
+
+    public function getDoctor(): ?Doctor
+    {
+        return $this->doctor;
+    }
+
+    public function setDoctor(Doctor $doctor): self
+    {
+        // set the owning side of the relation if necessary
+        if ($doctor->getEmployee() !== $this) {
+            $doctor->setEmployee($this);
+        }
+
+        $this->doctor = $doctor;
 
         return $this;
     }
