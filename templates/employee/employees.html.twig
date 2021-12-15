@@ -22,6 +22,8 @@
                         <td>{{ employee.surname }}</td>
                         {% if employee.user.roles[0]=="ROLE_EMPLOYEE" %}
                             <td>Pracownik administracyjny</td>
+                        {% elseif  employee.user.roles[0]=="ROLE_DOCTOR" %}
+                            <td>Lekarz</td>
                         {% else %}
                             <td>Administrator systemu</td>
                         {% endif %}
@@ -36,6 +38,9 @@
         <div class="container-sm w-75">
             <a href="{{ path('add_employee') }}">
                 <button class="btn btn-danger">Dodaj pracownika</button>
+            </a>
+            <a href="{{ path('add_doctor') }}">
+                <button class="btn btn-danger">Dodaj lekarza</button>
             </a>
         </div>
     </div>
