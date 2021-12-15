@@ -34,8 +34,8 @@ class RegistrationController extends AbstractController
                 )
             );
             $user->setRoles(["ROLE_PATIENT"]);
-            $patient->setUserid($user);
-            $user->setPatientid($patient);
+            $patient->setUser($user);
+            $user->setPatient($patient);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->persist($patient);

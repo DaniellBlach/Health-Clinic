@@ -42,9 +42,11 @@ class UserFixtures extends Fixture
             ['pacjent1@klinika.pl', 'ROLE_PATIENT', 'admin123'],
             ['pacjent2@klinika.pl', 'ROLE_PATIENT', 'admin123'],
             ['pacjent3@klinika.pl', 'ROLE_PATIENT', 'admin123'],
-            ['admin@klinika.com', 'ROLE_ADMIN', 'admin123'],
+            ['admin@klinika.pl', 'ROLE_ADMIN', 'admin123'],
             ['pracownik1@klinika.pl', 'ROLE_EMPLOYEE', 'admin123'],
             ['pracownik2@klinika.pl', 'ROLE_EMPLOYEE', 'admin123'],
+            ['lekarz1@klinika.pl', 'ROLE_DOCTOR', 'admin123'],
+            ['lekarz2@klinika.pl', 'ROLE_DOCTOR', 'admin123'],
         ];
     }
 

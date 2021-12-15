@@ -20,7 +20,7 @@
                     <tr>
                         <td>{{ employee.name }}</td>
                         <td>{{ employee.surname }}</td>
-                        {% if employee.userid.roles[0]=="ROLE_EMPLOYEE" %}
+                        {% if employee.user.roles[0]=="ROLE_EMPLOYEE" %}
                             <td>Pracownik administracyjny</td>
                         {% else %}
                             <td>Administrator systemu</td>

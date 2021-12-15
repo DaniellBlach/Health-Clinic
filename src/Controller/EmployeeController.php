@@ -31,7 +31,7 @@ class EmployeeController extends AbstractController
         $user = $this->security->getUser();
         $repository = $this->getDoctrine()->getRepository(Employee::class);
         return $this->render('employee/index.html.twig', [
-            'employee' => $repository->find($user->getemployeeid())
+            'employee' => $repository->find($user->getemployee())
         ]);
     }
 
@@ -55,8 +55,8 @@ class EmployeeController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
-            $employee->setUserid($user);
-            $user->setEmployeeid($employee);
+            $employee->setUser($user);
+            $user->setEmployee($employee);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->persist($employee);

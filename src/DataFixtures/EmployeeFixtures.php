@@ -23,11 +23,11 @@ class EmployeeFixtures extends Fixture implements DependentFixtureInterface
             $employee
                 ->setName($name)
                 ->setSurname($surname)
-                ->setUserid($this->getReference('user_' . $i));
+                ->setUser($this->getReference('user_' . $i));
             $user = $this->getReference('user_' . $i++);
             $this->addReference('employee_' . $j++, $employee);
             $manager->persist($employee);
-            $user->setEmployeeid($employee);
+            $user->setEmployee($employee);
         }
 
         $manager->flush();
@@ -40,6 +40,7 @@ class EmployeeFixtures extends Fixture implements DependentFixtureInterface
             ['Alicja', 'Kowalska'],
             ['Joanna', 'Ptasińska'],
             ['Andrzej', 'Zając'],
+            ['Kamil', 'Banan'],
         ];
     }
 

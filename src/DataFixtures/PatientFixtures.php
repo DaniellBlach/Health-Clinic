@@ -26,10 +26,10 @@ class PatientFixtures extends Fixture implements DependentFixtureInterface
                 ->setDateOfBirth($date_of_birth)
                 ->setSex($sex)
                 ->setPhoneNumber($phone_number)
-                ->setUserid($this->getReference('user_' . $i));
+                ->setUser($this->getReference('user_' . $i));
             $user=$this->getReference('user_' . $i++);
             $manager->persist($patient);
-            $user->setPatientid($patient);
+            $user->setPatient($patient);
         }
 
         $manager->flush();
