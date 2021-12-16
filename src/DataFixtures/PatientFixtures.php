@@ -27,6 +27,7 @@ class PatientFixtures extends Fixture implements DependentFixtureInterface
                 ->setSex($sex)
                 ->setPhoneNumber($phone_number)
                 ->setUser($this->getReference('user_' . $i));
+            $this->addReference('patient_' . $i, $patient);
             $user=$this->getReference('user_' . $i++);
             $manager->persist($patient);
             $user->setPatient($patient);
