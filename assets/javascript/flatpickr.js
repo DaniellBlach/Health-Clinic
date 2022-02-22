@@ -1,9 +1,9 @@
 import flatpickr from 'flatpickr';
 import {Polish} from "flatpickr/dist/l10n/pl";
 
-const birthPicker = document.querySelectorAll(".birthPicker");
+const datePicker = document.querySelectorAll(".datePicker");
 
-flatpickr(birthPicker, {
+flatpickr(datePicker, {
     locale: Polish,
     enableTime: false,
 });
