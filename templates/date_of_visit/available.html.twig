@@ -12,7 +12,9 @@
                     <th scope="col">Data</th>
                     <th scope="col">Godzina</th>
                     <th scope="col">Lekarz</th>
-                    <th scope="col">Umów wizytę</th>
+                    {% if is_granted("ROLE_PATIENT") %}
+                        <th scope="col">Umów wizytę</th>
+                    {% endif %}
                 </tr>
                 </thead>
                 <tbody>
@@ -21,11 +23,13 @@
                         <td>{{ visit.date|date("d/m/Y") }}</td>
                         <td>{{ visit.time|date("H:i") }}</td>
                         <td>{{ visit.doctor.employee.name }} {{ visit.doctor.employee.surname }}</td>
-                        <td>
-                            <a href="{{ path('sign_up',{visit: visit.id}) }}">
-                                <button class="btn btn-danger">Umów wizytę</button>
-                            </a>
-                        </td>
+                        {% if is_granted("ROLE_PATIENT") %}
+                            <td>
+                                <a href="{{ path('sign_up',{visit: visit.id}) }}">
+                                    <button class="btn btn-danger">Umów wizytę</button>
+                                </a>
+                            </td>
+                        {% endif %}
                     </tr>
                 {% endfor %}
                 </tbody>
