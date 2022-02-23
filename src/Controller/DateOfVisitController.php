@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\DateOfVisit;
+use App\Form\DateOfVisitType;
 use App\Form\SignUpForVisitType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -64,5 +65,45 @@ class DateOfVisitController extends AbstractController
             'visit' => $visit,
             'form' => $form->createView()
         ]);
+    }
+
+    /**
+     * @Route("/add/visits", name="add_visits")
+     */
+    public function addVisits(Request $request): Response
+    {
+        $form = $this->createForm(DateOfVisitType::class);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $date = $form->get('date')->getData();
+            $doctor = $form->get('Doctor')->getData();
+            $startTime = $form->get('startTime')->getData();
+            $endTime = $form->get('endTime')->getData();
+            $howManyWorkTime = ($endTime->format("H") * 60 + $endTime->format("i")) - ($startTime->format("H") * 60 + $startTime->format("i"));
+            $howManyVisits = floor($howManyWorkTime / 20);
+            if ($howManyVisits > 0) {
+                for ($i = 0; $i < $howManyVisits; $i++) {
+                    $this->createVisit($doctor, $date, $startTime);
+                    date_add($startTime, date_interval_create_from_date_string("20 minutes"));
+                }
+                $this->addFlash('success', 'Pomyślnie dodano terminy wizyt');
+            } else {
+                $this->addFlash('error', 'Podano błędne dane');
+            }
+        }
+        return $this->render('date_of_visit/add.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
+    public function createVisit($doctor, $date, $startTime)
+    {
+        $visit = new DateOfVisit();
+        $visit->setDoctor($doctor);
+        $visit->setDate($date);
+        $visit->setTime($startTime);
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($visit);
+        $entityManager->flush();
     }
 }
