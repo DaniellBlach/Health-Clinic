@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Wizyty lekarskie{% endblock %}
+
+{% block body %}
+    <div class="container-sm w-75">
+        <h1 class="text-center">Wizyty</h1>
+        <table class="table table-dark">
+            <thead>
+            <tr>
+                <th scope="col">Data</th>
+                <th scope="col">Godzina</th>
+                <th scope="col">Typ wizyty</th>
+                {% if is_granted('ROLE_DOCTOR') %}
+                    <th scope="col">Pacjent</th>
+                {% endif %}
+                {% if is_granted('ROLE_PATIENT') %}
+                    <th scope="col">Lekarz</th>
+                {% endif %}
+                {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_EMPLOYEE') %}
+                    <th scope="col">Lekarz</th>
+                    <th scope="col">Pacjent</th>
+                {% endif %}
+            </tr>
+            </thead>
+            <tbody>
+            {% for visit in visits %}
+                {% if visit.patient!=null %}
+                    <tr>
+                        {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_EMPLOYEE') %}
+                            <td>{{ visit.date|date("d/m/Y") }}</td>
+                            <td>{{ visit.time|date("h:i") }}</td>
+                            <td>{{ visit.typeOfVisit }}</td>
+                            <td>{{ visit.doctor.employee.name }} {{ visit.doctor.employee.surname }}</td>
+                            <td>{{ visit.patient.name }} {{ visit.patient.surname }}</td>
+                        {% elseif app.user.employee!=null and app.user.employee.doctor==visit.doctor %}
+                            <td>{{ visit.date|date("d/m/Y") }}</td>
+                            <td>{{ visit.time|date("h:i") }}</td>
+                            <td>{{ visit.typeOfVisit }}</td>
+                            <td>{{ visit.patient.name }} {{ visit.patient.surname }}</td>
+                        {% elseif app.user.patient!=null and app.user.patient==visit.patient %}
+                            <td>{{ visit.date|date("d/m/Y") }}</td>
+                            <td>{{ visit.time|date("h:i") }}</td>
+                            <td>{{ visit.typeOfVisit }}</td>
+                            <td>{{ visit.doctor.employee.name }} {{ visit.doctor.employee.surname }}</td>
+                        {% endif %}
+                    </tr>
+                {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+        {%if is_granted("ROLE_EMPLOYEE") or is_granted("ROLE_ADMIN") %}
+            <a href="{{ path('available_visits') }}">
+                <button class="btn btn-dark">Dostępne wizyty</button>
+            </a>
+            <a href="{{ path('add_visits') }}">
+                <button class="btn btn-dark">Dodaj wizyty lekarskie</button>
+            </a>
+        {% endif %}
+    </div>
+{% endblock %}

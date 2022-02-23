@@ -45,6 +45,9 @@
         <a href="{{ path('patient') }}">
             <button class="btn btn-primary">Moje Dane</button>
         </a>
+        <a href="{{ path('available_visits') }}">
+            <button class="btn btn-primary">Umów Wizytę</button>
+        </a>
 
     {% elseif is_granted('ROLE_DOCTOR') %}
         <a href="{{ path('patients') }}">
@@ -54,11 +57,19 @@
             <button class="btn btn-primary">Moje Dane</button>
         </a>
     {% endif %}
+    <a href="{{ path('visits') }}">
+        <button class="btn btn-primary">Wizyty Lekarskie</button>
+    </a>
     <a href="{{ path('app_logout') }}">
         <button class="btn btn-danger">Wyloguj</button>
     </a>
     {% for message in app.flashes('success') %}
         <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% for message in app.flashes('error') %}
+        <div class="alert alert-danger">
             {{ message }}
         </div>
     {% endfor %}

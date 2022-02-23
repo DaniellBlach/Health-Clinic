@@ -39,7 +39,7 @@ class PatientType extends AbstractType
                 'label' => 'Data urodzin',
                 'widget' => 'single_text',
                 'attr' => [
-                    'class' => 'form-control birthPicker bg-white'
+                    'class' => 'form-control datePicker bg-white'
                 ],
             ])
             ->add('sex', ChoiceType::class, [
