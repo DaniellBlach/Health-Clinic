@@ -73,4 +73,7 @@ class Doctor
 
         return $this;
     }
+    public function __toString() {
+        return 'Dr. '. $this->employee->getName() .' '. $this->employee->getSurname();
+    }
 }
