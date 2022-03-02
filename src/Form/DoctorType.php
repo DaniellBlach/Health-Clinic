@@ -27,6 +27,10 @@ class DoctorType extends AbstractType
                         'max' => 7,
                     ]),
                 ],
+            ])
+            ->add('biography', null, [
+                'label' => 'Biografia',
+                'attr' => ['class' => 'form-control'],
             ]);
     }
 
