@@ -33,6 +33,11 @@ class Doctor
      */
     private $employee;
 
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $biography;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -73,7 +78,21 @@ class Doctor
 
         return $this;
     }
-    public function __toString() {
-        return 'Dr. '. $this->employee->getName() .' '. $this->employee->getSurname();
+
+    public function getBiography(): ?string
+    {
+        return $this->biography;
+    }
+
+    public function setBiography(string $biography): self
+    {
+        $this->biography = $biography;
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return 'Dr. ' . $this->employee->getName() . ' ' . $this->employee->getSurname();
     }
 }
