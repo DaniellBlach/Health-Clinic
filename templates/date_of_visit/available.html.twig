@@ -22,7 +22,9 @@
                     <tr>
                         <td>{{ visit.date|date("d/m/Y") }}</td>
                         <td>{{ visit.time|date("H:i") }}</td>
-                        <td>{{ visit.doctor.employee.name }} {{ visit.doctor.employee.surname }}</td>
+                        <td>{{ visit.doctor }} <a href="{{ path('doctor',{doctor: visit.doctor.id}) }}">
+                                <p class="">zobacz informacje o lekarzu</p>
+                            </a></td>
                         {% if is_granted("ROLE_PATIENT") %}
                             <td>
                                 <a href="{{ path('sign_up',{visit: visit.id}) }}">

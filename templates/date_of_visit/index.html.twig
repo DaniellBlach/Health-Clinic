@@ -31,7 +31,9 @@
                             <td>{{ visit.date|date("d/m/Y") }}</td>
                             <td>{{ visit.time|date("h:i") }}</td>
                             <td>{{ visit.typeOfVisit }}</td>
-                            <td>{{ visit.doctor.employee.name }} {{ visit.doctor.employee.surname }}</td>
+                            <td>{{ visit.doctor }} <a href="{{ path('doctor',{doctor: visit.doctor.id}) }}">
+                                    <p class="">zobacz informacje o lekarzu</p>
+                                </a></td>
                             <td>{{ visit.patient.name }} {{ visit.patient.surname }}</td>
                         {% elseif app.user.employee!=null and app.user.employee.doctor==visit.doctor %}
                             <td>{{ visit.date|date("d/m/Y") }}</td>
@@ -42,7 +44,9 @@
                             <td>{{ visit.date|date("d/m/Y") }}</td>
                             <td>{{ visit.time|date("h:i") }}</td>
                             <td>{{ visit.typeOfVisit }}</td>
-                            <td>{{ visit.doctor.employee.name }} {{ visit.doctor.employee.surname }}</td>
+                            <td>{{ visit.doctor }} <a href="{{ path('doctor',{doctor: visit.doctor.id}) }}">
+                                    <p class="">zobacz informacje o lekarzu</p>
+                                </a></td>
                         {% endif %}
                     </tr>
                 {% endif %}
