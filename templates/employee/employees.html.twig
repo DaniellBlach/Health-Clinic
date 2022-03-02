@@ -4,7 +4,7 @@
 
 {% block body %}
     <div class="example-wrapper">
-        <div class="container-sm w-75">
+        <div class="container-fluid w-100">
             <h1 class="text-center">Pracownicy</h1>
             <table class="table table-dark">
                 <thead>
@@ -14,6 +14,7 @@
                     <th scope="col">Rola</th>
                     <th scope="col">Specializacja</th>
                     <th scope="col">Numer prawa wykonywania zawodu</th>
+                    <th scope="col">Biografia</th>
                     <th scope="col">Operacje</th>
                 </tr>
                 </thead>
@@ -26,12 +27,15 @@
                             <td>Pracownik administracyjny</td>
                             <td>-</td>
                             <td>-</td>
+                            <td>-</td>
                         {% elseif  employee.user.roles[0]=="ROLE_DOCTOR" %}
                             <td>Lekarz</td>
                             <td>{{ employee.doctor.specialization }}</td>
                             <td>{{ employee.doctor.licenseNumber }}</td>
+                            <td>{{ employee.doctor.biography }}</td>
                         {% else %}
                             <td>Administrator systemu</td>
+                            <td>-</td>
                             <td>-</td>
                             <td>-</td>
                         {% endif %}
@@ -43,7 +47,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="container-sm w-75">
+        <div class="container-fluid w-100">
             <a href="{{ path('add_employee') }}">
                 <button class="btn btn-danger">Dodaj pracownika</button>
             </a>

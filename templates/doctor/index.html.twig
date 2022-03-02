@@ -4,31 +4,27 @@
 
 {% block body %}
     <div class="example-wrapper">
-        <div class="container-sm w-25">
-            <h1 class="text-center">Dane Lekarza</h1>
-            <table class="table table-dark">
-                <tbody>
-                <tr>
-                    <th>Imię</th>
-                    <td>{{ doctor.employee.name}}</td>
-                </tr>
-                <tr>
-                    <th>Nazwisko</th>
-                    <td>{{ doctor.employee.surname}}</td>
-                </tr>
-                <tr>
-                    <th>Numer prawa do wykonywania zawodu</th>
-                    <td>{{ doctor.licenseNumber}}</td>
-                </tr>
-                <tr>
-                    <th>Specializacja</th>
-                    <td>{{ doctor.specialization}}</td>
-                </tr>
-                <tr>
-                    <td colspan="2" class="text-center"><a href="{{ path('change_password') }}"><button class="btn btn-danger">Zmień Hasło</button></a></td>
-                </tr>
-                </tbody>
-            </table>
+        <div class="container-sm w-50">
+            <div class="card mt-4 shadow">
+                <div class="row no-gutters h-100">
+                    <div class="col-md-4">
+                        <img class="img-fluid" src="/images/male-ph.jpeg" alt="Card image cap">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5>{{ doctor }} </h5>
+                            <h6>Numer prawa do wykonywania zawodu: {{ doctor.licenseNumber }}</h6>
+                            <h6>Specializacja: {{ doctor.specialization }}</h6>
+                            <p>{{ doctor.biography }}</p>
+                            {% if is_granted("ROLE_DOCTOR") %}
+                                <a href="{{ path('change_password') }}">
+                                    <button class="btn btn-danger">Zmień Hasło</button>
+                                </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}
