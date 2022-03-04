@@ -13,6 +13,16 @@ use Symfony\Component\Routing\Annotation\Route;
 class TestResultsController extends AbstractController
 {
     /**
+     * @Route("/all/tests/{patient}", name="all_tests")
+     */
+    public function index(Patient $patient): Response
+    {
+        $repository = $this->getDoctrine()->getRepository(TestResults::class);
+        return $this->render('test_results/index.html.twig', [
+            'tests' => $repository->findBy(['patient'=>$patient])
+        ]);
+    }
+    /**
      * @Route("/add/test/results/{patient}", name="add_test_results")
      */
     public function add(Request $request,Patient $patient): Response
