@@ -29,6 +29,12 @@
                         <td>{{ patient.phoneNumber }}</td>
                         <td><a href="{{ path('patient_edit',{patient: patient.id}) }}">
                                 <button class="btn btn-danger">Edytuj dane</button>
+                            </a>
+                            <a href="{{ path('add_test_results',{patient: patient.id}) }}">
+                                <button class="btn btn-primary">Dodaj Wyniki badań</button>
+                            </a>
+                            <a href="{{ path('all_tests',{patient: patient.id}) }}">
+                                <button class="btn btn-primary">Zobacz Badania</button>
                             </a></td>
                     </tr>
                 {% endfor %}
