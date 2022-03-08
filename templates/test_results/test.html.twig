@@ -3,6 +3,8 @@
     <p>Imię i nazwisko: {{ patient }}</p>
     <p>Numer pesel: {{ patient.pesel }}</p>
     <p>Data urodzin: {{ patient.dateOfBirth|date("d/m/Y") }}</p>
+    <p>Płeć: {{ patient.sex }}</p>
+    <p>Data i godzina pobrania próbki: {{ test.date|date("d/m/Y") }} {{ test.time|date("H:i") }}</p>
     <h3>Wyniki:</h3>
     <table class="table table-bordered">
         <thead>
