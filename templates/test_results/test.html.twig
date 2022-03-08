@@ -1,0 +1,43 @@
+{% block body %}
+    <h3>Dane:</h3>
+    <p>Imię i nazwisko: {{ patient }}</p>
+    <p>Numer pesel: {{ patient.pesel }}</p>
+    <p>Data urodzin: {{ patient.dateOfBirth|date("d/m/Y") }}</p>
+    <h3>Wyniki:</h3>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th scope="col" style="">Nazwa badania</th>
+            <th scope="col">Norma</th>
+            <th scope="col">Wyniki</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Hematokryt</td>
+            <td>{{ norm[0] }}</td>
+            <td>{{ test.hematocrit }}%</td>
+        </tr>
+        <tr>
+            <td>Hemoglobina</td>
+            <td>{{ norm[1] }}</td>
+            <td>{{ test.hemoglobin }}</td>
+        </tr>
+        <tr>
+            <td>Lekocyty</td>
+            <td>{{ norm[2] }}</td>
+            <td>{{ test.leukocytes }}</td>
+        </tr>
+        <tr>
+            <td>Limfocyty</td>
+            <td>{{ norm[3] }}</td>
+            <td>{{ test.lymphocytes }}</td>
+        </tr>
+        <tr>
+            <td>Erocyty</td>
+            <td>{{ norm[4] }}</td>
+            <td>{{ test.erythrocytes }}</td>
+        </tr>
+        </tbody>
+    </table>
+{% endblock %}

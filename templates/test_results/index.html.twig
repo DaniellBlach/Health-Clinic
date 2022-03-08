@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Wyniki badań{% endblock %}
+{% block title %}Badania{% endblock %}
 
 {% block body %}
     <div class="container w-25">
@@ -8,7 +8,7 @@
         <table class="table table-dark">
             <thead>
             <tr>
-                <th scope="col">Dzień</th>
+                <th scope="col">Data</th>
                 <th scope="col">Godzina pobrania</th>
                 <th scope="col"></th>
             </tr>
@@ -18,8 +18,8 @@
                 <tr>
                     <td>{{ test.date|date("d/m/Y") }}</td>
                     <td>{{ test.time|date("H:i") }}</td>
-                    <td><a href="">
-                            <button class="btn btn-danger">Zobacz szczegóły</button>
+                    <td><a href="{{ path('test_details',{test: test.id}) }}">
+                            <button class="btn btn-primary">Zobacz wyniki Badań</button>
                         </a>
                     </td>
                 </tr>
