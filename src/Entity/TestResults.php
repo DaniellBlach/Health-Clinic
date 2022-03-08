@@ -34,27 +34,27 @@ class TestResults
     private $time;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="float", nullable=true)
      */
     private $hematocrit;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="float", nullable=true)
      */
     private $hemoglobin;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="float", nullable=true)
      */
     private $leukocytes;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="float", nullable=true)
      */
     private $lymphocytes;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="float", nullable=true)
      */
     private $erythrocytes;
 
@@ -99,60 +99,60 @@ class TestResults
         return $this;
     }
 
-    public function getHematocrit(): ?int
+    public function getHematocrit(): ?float
     {
         return $this->hematocrit;
     }
 
-    public function setHematocrit(?int $Hematocrit): self
+    public function setHematocrit(?float $Hematocrit): self
     {
         $this->hematocrit = $Hematocrit;
 
         return $this;
     }
 
-    public function getHemoglobin(): ?int
+    public function getHemoglobin(): ?float
     {
         return $this->hemoglobin;
     }
 
-    public function setHemoglobin(?int $Hemoglobin): self
+    public function setHemoglobin(?float $Hemoglobin): self
     {
         $this->hemoglobin = $Hemoglobin;
 
         return $this;
     }
 
-    public function getLeukocytes(): ?int
+    public function getLeukocytes(): ?float
     {
         return $this->leukocytes;
     }
 
-    public function setLeukocytes(?int $leukocytes): self
+    public function setLeukocytes(?float $leukocytes): self
     {
         $this->leukocytes = $leukocytes;
 
         return $this;
     }
 
-    public function getLymphocytes(): ?int
+    public function getLymphocytes(): ?float
     {
         return $this->lymphocytes;
     }
 
-    public function setLymphocytes(?int $lymphocytes): self
+    public function setLymphocytes(?float $lymphocytes): self
     {
         $this->lymphocytes = $lymphocytes;
 
         return $this;
     }
 
-    public function getErythrocytes(): ?int
+    public function getErythrocytes(): ?float
     {
         return $this->erythrocytes;
     }
 
-    public function setErythrocytes(?int $erythrocytes): self
+    public function setErythrocytes(?float $erythrocytes): self
     {
         $this->erythrocytes = $erythrocytes;
 
