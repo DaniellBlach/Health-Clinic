@@ -16,23 +16,14 @@ use Symfony\Component\Security\Core\Security;
  */
 class PatientController extends AbstractController
 {
-    private $security;
-
-    public function __construct(Security $security)
-    {
-        $this->security = $security;
-    }
-
     /**
-     * @Route("/patient", name="patient")
+     * @Route("/patient/{patient}", name="patient")
      */
-    public function index(): Response
+    public function index(Patient $patient): Response
     {
-        $user = $this->security->getUser();
-
         $repository = $this->getDoctrine()->getRepository(Patient::class);
         return $this->render('patient/index.html.twig', [
-            'patient' => $repository->find($user->getpatient())
+            'patient' => $repository->find($patient)
         ]);
     }
 
