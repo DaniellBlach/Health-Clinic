@@ -34,12 +34,16 @@
                             <td>{{ visit.doctor }} <a href="{{ path('doctor',{doctor: visit.doctor.id}) }}">
                                     <p class="">zobacz informacje o lekarzu</p>
                                 </a></td>
-                            <td>{{ visit.patient }}</td>
+                            <td>{{ visit.patient }}<a href="{{ path('patient',{patient: visit.patient.id}) }}">
+                                    <p class="">zobacz informacje o pacjencie</p>
+                                </a></td>
                         {% elseif app.user.employee!=null and app.user.employee.doctor==visit.doctor %}
                             <td>{{ visit.date|date("d/m/Y") }}</td>
                             <td>{{ visit.time|date("h:i") }}</td>
                             <td>{{ visit.typeOfVisit }}</td>
-                            <td>{{ visit.patient}}</td>
+                            <td>{{ visit.patient }}<a href="{{ path('patient',{patient: visit.patient.id}) }}">
+                                    <p class="">zobacz informacje o pacjencie</p>
+                                </a></td>
                         {% elseif app.user.patient!=null and app.user.patient==visit.patient %}
                             <td>{{ visit.date|date("d/m/Y") }}</td>
                             <td>{{ visit.time|date("h:i") }}</td>
@@ -53,7 +57,7 @@
             {% endfor %}
             </tbody>
         </table>
-        {%if is_granted("ROLE_EMPLOYEE") or is_granted("ROLE_ADMIN") %}
+        {% if is_granted("ROLE_EMPLOYEE") or is_granted("ROLE_ADMIN") %}
             <a href="{{ path('available_visits') }}">
                 <button class="btn btn-dark">Dostępne wizyty</button>
             </a>
