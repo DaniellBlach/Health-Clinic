@@ -1,6 +1,6 @@
 # Health Clinic
 
-My Bachelor's thesis, entitled „Development of a Web Application Supporting the Work of a Health Clinic".
+My Bachelor's thesis entitled „Development of a Web Application Supporting the Work of a Health Clinic".
 
 ## Descrription
 
