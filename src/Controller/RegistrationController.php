@@ -6,6 +6,7 @@ use App\Entity\Patient;
 use App\Entity\User;
 use App\Form\PatientType;
 use App\Form\UserType;
+use Doctrine\DBAL\Types\DateType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -36,6 +37,7 @@ class RegistrationController extends AbstractController
             $user->setRoles(["ROLE_PATIENT"]);
             $patient->setUser($user);
             $user->setPatient($patient);
+            $patient->setDateOfJoining(date_create(date("d-m-Y")));
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->persist($patient);

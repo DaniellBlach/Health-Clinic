@@ -54,6 +54,11 @@ class Patient
      */
     private $user;
 
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $dateOfJoining;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -145,5 +150,17 @@ class Patient
     public function __toString()
     {
         return $this->name . ' ' . $this->surname;
+    }
+
+    public function getDateOfJoining(): ?\DateTimeInterface
+    {
+        return $this->dateOfJoining;
+    }
+
+    public function setDateOfJoining(\DateTimeInterface $dateOfJoining): self
+    {
+        $this->dateOfJoining = $dateOfJoining;
+
+        return $this;
     }
 }
