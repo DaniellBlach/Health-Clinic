@@ -42,14 +42,14 @@
         </a>
 
     {% elseif is_granted('ROLE_PATIENT') %}
-        <a href="{{ path('patient') }}">
+        <a href="{{ path('patient',{patient: app.user.patient.id}) }}">
             <button class="btn btn-primary">Moje Dane</button>
-        </a>
-        <a href="{{ path('available_visits') }}">
-            <button class="btn btn-primary">Umów Wizytę</button>
         </a>
         <a href="{{ path('all_tests',{patient: app.user.patient.id}) }}">
             <button class="btn btn-primary">Wyniki badań</button>
+        </a>
+        <a href="{{ path('available_visits') }}">
+            <button class="btn btn-primary">Umów Wizytę</button>
         </a>
 
     {% elseif is_granted('ROLE_DOCTOR') %}
