@@ -6,7 +6,6 @@ use App\Entity\Patient;
 use App\Entity\User;
 use App\Form\PatientType;
 use App\Form\UserType;
-use Doctrine\DBAL\Types\DateType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
