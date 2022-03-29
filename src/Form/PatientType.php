@@ -2,7 +2,9 @@
 
 namespace App\Form;
 
+use App\Entity\Doctor;
 use App\Entity\Patient;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -16,6 +18,17 @@ class PatientType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+            ->add('doctorOfFirstContact', EntityType::class, [
+                'label' => 'Lekarz pierwszego kontaktu',
+                'class' => Doctor::class,
+                'choice_label' => function ($value) {
+                    return $value;
+                },
+                'multiple' => false,
+                'attr' => [
+                    'class' => 'form-control'
+                ],
+            ])
             ->add('name', null, [
                 'label' => 'Imię',
                 'attr' => ['class' => 'form-control'],

@@ -59,6 +59,11 @@ class Patient
      */
     private $dateOfJoining;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=doctor::class)
+     */
+    private $doctorOfFirstContact;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -160,6 +165,18 @@ class Patient
     public function setDateOfJoining(\DateTimeInterface $dateOfJoining): self
     {
         $this->dateOfJoining = $dateOfJoining;
+
+        return $this;
+    }
+
+    public function getDoctorOfFirstContact(): ?doctor
+    {
+        return $this->doctorOfFirstContact;
+    }
+
+    public function setDoctorOfFirstContact(?doctor $doctorOfFirstContact): self
+    {
+        $this->doctorOfFirstContact = $doctorOfFirstContact;
 
         return $this;
     }
