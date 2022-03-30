@@ -1,25 +1,27 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Dane Pacjenta{% endblock %}
-
 {% block body %}
     <div class="container w-50">
         <div class="card mt-4 shadow">
             <div class="card-header">
-                <h5>{{ patient }}</h5>
+                <div class="d-flex justify-content-between">
+                    <h5>{{ patient }}</h5>
+                    <h5>Data dołączenia {{ patient.dateOfJoining|date("d/m/Y") }}</h5>
+                </div>
             </div>
             <div class="card-body">
                 <p>Pesel: {{ patient.pesel }}</p>
                 <p>Data urodzenia: {{ patient.dateOfBirth|date("d/m/Y") }}</p>
                 <p>Płeć: {{ patient.sex }}</p>
                 <p>Numer Telefonu: {{ patient.phoneNumber }}</p>
-                <p>
+                <p>Lekarz pierwszego kontaktu: {{ patient.doctorOfFirstContact }}</p>
                 <h5>Operacje</h5>
                 <p>
+                    <a href="{{ path('patient_edit',{patient: patient.id}) }}">
+                        <button class="btn btn-dark">Edytuj dane</button>
+                    </a>
                     {% if is_granted('ROLE_PATIENT') %}
-                        <a href="{{ path('patient_edit',{patient: patient.id}) }}">
-                            <button class="btn btn-dark">Edytuj dane</button>
-                        </a>
                         <a href="{{ path('change_password') }}">
                             <button class="btn btn-dark">Zmień hasło</button>
                         </a>
@@ -29,9 +31,6 @@
                         </a>
                         <a href="{{ path('all_tests',{patient: patient.id}) }}">
                             <button class="btn btn-dark">Zobacz Badania</button>
-                        </a>
-                        <a href="{{ path('patient_edit',{patient: patient.id}) }}">
-                            <button class="btn btn-dark">Edytuj dane</button>
                         </a>
                     {% endif %}
                 </p>

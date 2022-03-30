@@ -36,6 +36,7 @@ class RegistrationController extends AbstractController
             $user->setRoles(["ROLE_PATIENT"]);
             $patient->setUser($user);
             $user->setPatient($patient);
+            $patient->setDateOfJoining(date_create(date("d-m-Y")));
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->persist($patient);
