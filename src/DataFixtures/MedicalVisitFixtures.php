@@ -17,7 +17,7 @@ class MedicalVisitFixtures extends Fixture implements DependentFixtureInterface
 
     public function loadMedicalVisits(ObjectManager $manager)
     {
-        foreach ($this->getMedicalVisitsData() as [$symptoms, $diagnosis, $recommendations,$date]) {
+        foreach ($this->getMedicalVisitsData() as [$symptoms, $diagnosis, $recommendations,$date,$additionalInfo]) {
             $MedicalVisit = new MedicalVisit();
             $MedicalVisit
                 ->setPatient($this->getReference("patient_0"))
@@ -25,6 +25,7 @@ class MedicalVisitFixtures extends Fixture implements DependentFixtureInterface
                 ->setSymptoms($symptoms)
                 ->setDiagnosis($diagnosis)
                 ->setRecommendations($recommendations)
+                ->setAdditionalInformation($additionalInfo)
                 ->setDate($date);
             $manager->persist($MedicalVisit);
         }
@@ -34,8 +35,9 @@ class MedicalVisitFixtures extends Fixture implements DependentFixtureInterface
     public function getMedicalVisitsData()
     {
         return [
-            ["Ból gardła, kaszel, katar, wysoka temperatura", "grypa", "zażywać leki z recepty zgodnie z zaleceniami",DateTime::createFromFormat('d.m.Y', '15.01.2022')],
-            ["Opuchnięta twarz, problemy z oddychaniem", "uczulenie", "zażywać leki z recepty, w wypadku nasilenia się symptomów bezwzwłocznie udać się do szpitala",DateTime::createFromFormat('d.m.Y', '11.03.2022')],
+            ["Ból gardła, kaszel, katar, wysoka temperatura", "grypa", "zażywać leki z recepty zgodnie z zaleceniami",DateTime::createFromFormat('d.m.Y', '15.01.2022'),"-"],
+            ["Opuchnięta twarz, problemy z oddychaniem", "uczulenie", "zażywać leki z recepty, w wypadku nasilenia się symptomów bezwzwłocznie udać się do szpitala",DateTime::createFromFormat('d.m.Y', '11.03.2022'),"-"],
+            ["-", "-", "-",DateTime::createFromFormat('d.m.Y', '18.03.2022'),"wizyta kontrolna"],
         ];
     }
 

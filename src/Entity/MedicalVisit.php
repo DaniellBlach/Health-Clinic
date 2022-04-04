@@ -49,6 +49,11 @@ class MedicalVisit
      */
     private $date;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $additionalInformation;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -122,6 +127,18 @@ class MedicalVisit
     public function setDate(\DateTimeInterface $date): self
     {
         $this->date = $date;
+
+        return $this;
+    }
+
+    public function getAdditionalInformation(): ?string
+    {
+        return $this->additionalInformation;
+    }
+
+    public function setAdditionalInformation(?string $additionalInformation): self
+    {
+        $this->additionalInformation = $additionalInformation;
 
         return $this;
     }

@@ -13,6 +13,7 @@
                 <th scope="col">Symptomy</th>
                 <th scope="col">Diagnoza</th>
                 <th scope="col">Zalecenia</th>
+                <th scope="col">Informacje dodatkowe</th>
             </tr>
             </thead>
             <tbody>
@@ -23,6 +24,7 @@
                     <td>{{ medicalVisit.symptoms}}</td>
                     <td>{{ medicalVisit.diagnosis}}</td>
                     <td>{{ medicalVisit.recommendations}}</td>
+                    <td>{{ medicalVisit.additionalInformation}}</td>
                 </tr>
             {% endfor %}
             </tbody>
