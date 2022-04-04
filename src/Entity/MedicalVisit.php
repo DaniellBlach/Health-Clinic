@@ -44,6 +44,11 @@ class MedicalVisit
      */
     private $recommendations;
 
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $date;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -105,6 +110,18 @@ class MedicalVisit
     public function setRecommendations(?string $recommendations): self
     {
         $this->recommendations = $recommendations;
+
+        return $this;
+    }
+
+    public function getDate(): ?\DateTimeInterface
+    {
+        return $this->date;
+    }
+
+    public function setDate(\DateTimeInterface $date): self
+    {
+        $this->date = $date;
 
         return $this;
     }
