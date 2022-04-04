@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Historia Leczenia{% endblock %}
+
+{% block body %}
+    <div class="container-sm w-75">
+        <h1 class="text-center">Historia leczenia</h1>
+        <table class="table table-dark">
+            <thead>
+            <tr>
+                <th scope="col">Data</th>
+                <th scope="col">Lekarz</th>
+                <th scope="col">Symptomy</th>
+                <th scope="col">Diagnoza</th>
+                <th scope="col">Zalecenia</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for medicalVisit in medicalVisits %}
+                <tr>
+                    <td>{{ medicalVisit.date|date("d.m.Y") }}</td>
+                    <td>{{ medicalVisit.doctor}}</td>
+                    <td>{{ medicalVisit.symptoms}}</td>
+                    <td>{{ medicalVisit.diagnosis}}</td>
+                    <td>{{ medicalVisit.recommendations}}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
