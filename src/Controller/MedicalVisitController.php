@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class MedicalVisitController extends AbstractController
 {
     /**
-     * @Route("/medical/visits/{patient}", name="medical_visit")
+     * @Route("/medical/visits/{patient}", name="medical_visits")
      */
     public function index(Patient $patient): Response
     {
