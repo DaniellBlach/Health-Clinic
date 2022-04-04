@@ -18,19 +18,33 @@
                 <p>Lekarz pierwszego kontaktu: {{ patient.doctorOfFirstContact }}</p>
                 <h5>Operacje</h5>
                 <p>
-                    <a href="{{ path('patient_edit',{patient: patient.id}) }}">
-                        <button class="btn btn-dark">Edytuj dane</button>
-                    </a>
+
                     {% if is_granted('ROLE_PATIENT') %}
                         <a href="{{ path('change_password') }}">
                             <button class="btn btn-dark">Zmień hasło</button>
+                        </a>
+                        <a href="{{ path('patient_edit',{patient: patient.id}) }}">
+                            <button class="btn btn-dark">Edytuj dane</button>
                         </a>
                     {% elseif is_granted('ROLE_EMPLOYEE') or is_granted('ROLE_ADMIN') %}
                         <a href="{{ path('add_test_results',{patient: patient.id}) }}">
                             <button class="btn btn-dark">Dodaj Wyniki badań</button>
                         </a>
+                        <a href="{{ path('patient_edit',{patient: patient.id}) }}">
+                            <button class="btn btn-dark">Edytuj dane</button>
+                            <a href="{{ path('all_tests',{patient: patient.id}) }}">
+                                <button class="btn btn-dark">Zobacz Badania</button>
+                            </a>
+                            <a href="{{ path('medical_visits',{patient: patient.id}) }}">
+                                <button class="btn btn-dark">Historia leczenia</button>
+                            </a>
+                        </a>
+                    {% elseif is_granted('ROLE_DOCTOR') %}
                         <a href="{{ path('all_tests',{patient: patient.id}) }}">
                             <button class="btn btn-dark">Zobacz Badania</button>
+                        </a>
+                        <a href="{{ path('medical_visits',{patient: patient.id}) }}">
+                            <button class="btn btn-dark">Historia leczenia</button>
                         </a>
                     {% endif %}
                 </p>
