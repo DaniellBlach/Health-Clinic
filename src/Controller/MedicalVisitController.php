@@ -20,7 +20,7 @@ class MedicalVisitController extends AbstractController
     {
         $repository = $this->getDoctrine()->getRepository(MedicalVisit::class);
         return $this->render('medical_visit/index.html.twig', [
-            "medicalVisits" => $repository->findAll()
+            "medicalVisits" => $repository->findBy(['patient'=>$patient])
         ]);
     }
 
