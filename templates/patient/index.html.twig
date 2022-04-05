@@ -46,6 +46,9 @@
                         <a href="{{ path('medical_visits',{patient: patient.id}) }}">
                             <button class="btn btn-dark">Historia leczenia</button>
                         </a>
+                        <a href="{{ path('add_medical_visit',{patient: patient.id, doctor: app.user.employee.doctor.id}) }}">
+                            <button class="btn btn-dark">Dodaj wizytę lekarską</button>
+                        </a>
                     {% endif %}
                 </p>
             </div>
