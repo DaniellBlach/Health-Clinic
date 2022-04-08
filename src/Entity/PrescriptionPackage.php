@@ -34,6 +34,16 @@ class PrescriptionPackage
      */
     private $prescriptions;
 
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $dateOfIssue;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $expirationDate;
+
     public function __construct()
     {
         $this->prescriptions = new ArrayCollection();
@@ -94,6 +104,30 @@ class PrescriptionPackage
                 $prescription->setPrescriptionPackage(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getDateOfIssue(): ?\DateTimeInterface
+    {
+        return $this->dateOfIssue;
+    }
+
+    public function setDateOfIssue(\DateTimeInterface $dateOfIssue): self
+    {
+        $this->dateOfIssue = $dateOfIssue;
+
+        return $this;
+    }
+
+    public function getExpirationDate(): ?\DateTimeInterface
+    {
+        return $this->expirationDate;
+    }
+
+    public function setExpirationDate(\DateTimeInterface $expirationDate): self
+    {
+        $this->expirationDate = $expirationDate;
 
         return $this;
     }
