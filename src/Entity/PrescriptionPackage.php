@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\PrescriptionPackageRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -26,6 +28,16 @@ class PrescriptionPackage
      * @ORM\Column(type="integer")
      */
     private $packageCode;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Prescription::class, mappedBy="prescriptionPackage", orphanRemoval=true)
+     */
+    private $prescriptions;
+
+    public function __construct()
+    {
+        $this->prescriptions = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -52,6 +64,36 @@ class PrescriptionPackage
     public function setPackageCode(int $packageCode): self
     {
         $this->packageCode = $packageCode;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Prescription>
+     */
+    public function getPrescriptions(): Collection
+    {
+        return $this->prescriptions;
+    }
+
+    public function addPrescription(Prescription $prescription): self
+    {
+        if (!$this->prescriptions->contains($prescription)) {
+            $this->prescriptions[] = $prescription;
+            $prescription->setPrescriptionPackage($this);
+        }
+
+        return $this;
+    }
+
+    public function removePrescription(Prescription $prescription): self
+    {
+        if ($this->prescriptions->removeElement($prescription)) {
+            // set the owning side to null (unless already changed)
+            if ($prescription->getPrescriptionPackage() === $this) {
+                $prescription->setPrescriptionPackage(null);
+            }
+        }
 
         return $this;
     }
