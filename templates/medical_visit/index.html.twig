@@ -27,11 +27,21 @@
                     <td>{{ medicalVisit.recommendations }}</td>
                     <td>{{ medicalVisit.additionalInformation }}</td>
                     {% if medicalVisit.prescriptionPackage != null %}
-                        <td><a href="{{ path('prescription_package',{package: medicalVisit.prescriptionPackage.id}) }}">
+                        <td>
+                            <a href="{{ path('prescription_package',{package: medicalVisit.prescriptionPackage.id}) }}">
                                 <button class="btn btn-primary">Recepta</button>
-                            </a></td>
+                            </a>
+                        </td>
                     {% else %}
-                        <td>Brak</td>
+                        {% if is_granted('ROLE_DOCTOR') %}
+                            <td>
+                                <a href="{{ path('add_prescription_package',{medicalVisit: medicalVisit.id}) }}">
+                                    <button class="btn btn-primary">Wystaw receptę</button>
+                                </a>
+                            </td>
+                        {% else %}
+                            <td>Brak recepty</td>
+                        {% endif %}
                     {% endif %}
                 </tr>
             {% endfor %}
