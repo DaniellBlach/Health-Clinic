@@ -41,7 +41,7 @@ class MedicalVisitController extends AbstractController
             $entityManager->persist($medicalVisit);
             $entityManager->flush();
             $this->addFlash('success', 'Pomyślnie dodano wizytę');
-            return $this->redirectToRoute('patients');
+            return $this->redirectToRoute('medical_visits',['patient'=>$patient->getId()]);
         }
         return $this->render('medical_visit/add.html.twig', [
             "form" => $form->createView(),
