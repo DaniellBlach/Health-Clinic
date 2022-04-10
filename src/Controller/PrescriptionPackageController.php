@@ -37,8 +37,7 @@ class PrescriptionPackageController extends AbstractController
         if ($form->isSubmitted() and $form->isValid()) {
             $key = rand(1000, 9999);
             $pesel = $medicalVisit->getPatient()->getPesel();
-            $code = $key + $pesel;
-            dump($key,$pesel,$code);
+            $code = $key . $pesel;
             $prescriptionPackage
                 ->setDateOfIssue(date_create(date("d-m-Y")))
                 ->setPackageCode($code)
@@ -48,7 +47,7 @@ class PrescriptionPackageController extends AbstractController
             $entityManager->persist($prescriptionPackage);
             $entityManager->flush();
             $this->addFlash('success', 'Pomyślnie wystawiono receptę');
-            return $this->redirectToRoute('prescription_package',['package'=>$prescriptionPackage->getId()]);
+            return $this->redirectToRoute('prescription_package', ['package' => $prescriptionPackage->getId()]);
         }
         return $this->render('prescription_package/add.html.twig', [
             'form' => $form->createView()

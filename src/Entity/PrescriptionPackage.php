@@ -25,7 +25,7 @@ class PrescriptionPackage
     private $packageKey;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=255)
      */
     private $packageCode;
 
@@ -66,12 +66,12 @@ class PrescriptionPackage
         return $this;
     }
 
-    public function getPackageCode(): ?int
+    public function getPackageCode(): ?string
     {
         return $this->packageCode;
     }
 
-    public function setPackageCode(int $packageCode): self
+    public function setPackageCode(string $packageCode): self
     {
         $this->packageCode = $packageCode;
 
