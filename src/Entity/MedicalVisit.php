@@ -54,6 +54,11 @@ class MedicalVisit
      */
     private $additionalInformation;
 
+    /**
+     * @ORM\OneToOne(targetEntity=PrescriptionPackage::class, cascade={"persist", "remove"})
+     */
+    private $prescriptionPackage;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -139,6 +144,18 @@ class MedicalVisit
     public function setAdditionalInformation(?string $additionalInformation): self
     {
         $this->additionalInformation = $additionalInformation;
+
+        return $this;
+    }
+
+    public function getPrescriptionPackage(): ?PrescriptionPackage
+    {
+        return $this->prescriptionPackage;
+    }
+
+    public function setPrescriptionPackage(?PrescriptionPackage $prescriptionPackage): self
+    {
+        $this->prescriptionPackage = $prescriptionPackage;
 
         return $this;
     }

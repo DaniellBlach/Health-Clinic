@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Wystaw lek{% endblock %}
+
+{% block body %}
+    <div class="container-sm w-25">
+        <h1 class="text-center">Wystaw lek</h1>
+        {{ form_start(form) }}
+        {{ form_row(form.medicine) }}
+        {{ form_row(form.quantity) }}
+        <button type="submit" class="btn btn-dark">Wystaw lek</button>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

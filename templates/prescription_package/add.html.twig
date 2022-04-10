@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Wystaw Receptę{% endblock %}
+
+{% block body %}
+    <div class="container-sm w-25">
+        <h1 class="text-center">Wystaw receptę</h1>
+        {{ form_start(form) }}
+        {{ form_row(form.expirationDate) }}
+        <button type="submit" class="btn btn-dark">Wystaw receptę</button>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Recepta{% endblock %}
+
+{% block body %}
+    <div class="container-sm w-50">
+        <h1 class="text-center">Recepta</h1>
+        <table class="table table-dark">
+            <thead>
+            <tr>
+                <th colspan="2">Data Wystawienia</th>
+                <th>{{ package.dateOfIssue|date("d/m/Y") }}</th>
+            </tr>
+            <tr>
+                <th colspan="2">Data Ważności</th>
+                <th>{{ package.expirationDate|date("d/m/Y") }}</th>
+            </tr>
+            <tr>
+                <th colspan="2">Klucz recepty</th>
+                <th>{{ package.packageKey }}</th>
+            </tr>
+            <tr>
+                <th colspan="3" class="text-center"><h4>Leki</h4></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for prescription in prescriptions %}
+                <tr>
+                    <td>Lek: {{ prescription.medicine }}</td>
+                    <td>Ilość opakowań: {{ prescription.quantity }}</td>
+                    <td>Klucz leku: {{ prescription.prescriptionKey }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        {% if is_granted('ROLE_DOCTOR') %}
+            <a href="{{ path('add_prescription',{prescriptionPackage: package.id}) }}">
+                <button class="btn btn-primary">Dodaj lek</button>
+            </a>
+        {% endif %}
+    </div>
+{% endblock %}
