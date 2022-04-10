@@ -12,11 +12,11 @@
                 <th>{{ package.dateOfIssue|date("d/m/Y") }}</th>
             </tr>
             <tr>
-                <th  colspan="2">Data Ważności</th>
+                <th colspan="2">Data Ważności</th>
                 <th>{{ package.expirationDate|date("d/m/Y") }}</th>
             </tr>
             <tr>
-                <th  colspan="2">Klucz recepty</th>
+                <th colspan="2">Klucz recepty</th>
                 <th>{{ package.packageKey }}</th>
             </tr>
             <tr>
@@ -33,5 +33,10 @@
             {% endfor %}
             </tbody>
         </table>
+        {% if is_granted('ROLE_DOCTOR') %}
+            <a href="{{ path('add_prescription',{prescriptionPackage: package.id}) }}">
+                <button class="btn btn-primary">Dodaj lek</button>
+            </a>
+        {% endif %}
     </div>
 {% endblock %}
