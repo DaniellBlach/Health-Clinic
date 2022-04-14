@@ -20,7 +20,7 @@ class Referral
     /**
      * @ORM\Column(type="integer")
      */
-    private $refferalKey;
+    private $referralKey;
 
     /**
      * @ORM\Column(type="date")
@@ -37,19 +37,24 @@ class Referral
      */
     private $additionalInformation;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $typeOfReferral;
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getRefferalKey(): ?int
+    public function getReferralKey(): ?int
     {
-        return $this->refferalKey;
+        return $this->referralKey;
     }
 
-    public function setRefferalKey(int $refferalKey): self
+    public function setRefferalKey(int $referralKey): self
     {
-        $this->refferalKey = $refferalKey;
+        $this->referralKey = $referralKey;
 
         return $this;
     }
@@ -86,6 +91,18 @@ class Referral
     public function setAdditionalInformation(string $additionalInformation): self
     {
         $this->additionalInformation = $additionalInformation;
+
+        return $this;
+    }
+
+    public function getTypeOfReferral(): ?string
+    {
+        return $this->typeOfReferral;
+    }
+
+    public function setTypeOfReferral(string $typeOfReferral): self
+    {
+        $this->typeOfReferral = $typeOfReferral;
 
         return $this;
     }
