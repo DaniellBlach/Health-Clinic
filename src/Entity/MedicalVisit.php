@@ -59,6 +59,11 @@ class MedicalVisit
      */
     private $prescriptionPackage;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Referral::class, cascade={"persist", "remove"})
+     */
+    private $referral;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -156,6 +161,18 @@ class MedicalVisit
     public function setPrescriptionPackage(?PrescriptionPackage $prescriptionPackage): self
     {
         $this->prescriptionPackage = $prescriptionPackage;
+
+        return $this;
+    }
+
+    public function getReferral(): ?Referral
+    {
+        return $this->referral;
+    }
+
+    public function setReferral(?Referral $referral): self
+    {
+        $this->referral = $referral;
 
         return $this;
     }
