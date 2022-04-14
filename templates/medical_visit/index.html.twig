@@ -15,6 +15,7 @@
                 <th scope="col">Zalecenia</th>
                 <th scope="col">Informacje dodatkowe</th>
                 <th scope="col">Recepta</th>
+                <th scope="col">Skierowanie</th>
             </tr>
             </thead>
             <tbody>
@@ -41,6 +42,23 @@
                             </td>
                         {% else %}
                             <td>Brak recepty</td>
+                        {% endif %}
+                    {% endif %}
+                    {% if medicalVisit.referral != null %}
+                        <td>
+                            <a href="{{ path('referral',{referral: medicalVisit.referral.id}) }}">
+                                <button class="btn btn-primary">Skierowanie</button>
+                            </a>
+                        </td>
+                    {% else %}
+                        {% if is_granted('ROLE_DOCTOR') %}
+                            <td>
+                                <a href="#">
+                                    <button class="btn btn-primary">Wystaw receptę</button>
+                                </a>
+                            </td>
+                        {% else %}
+                            <td>Brak Skierowania</td>
                         {% endif %}
                     {% endif %}
                 </tr>
