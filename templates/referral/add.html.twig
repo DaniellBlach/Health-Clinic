@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Wystaw skierowanie{% endblock %}
+
+{% block body %}
+    <div class="container-sm w-25">
+        <h1 class="text-center">Wystaw skierowanie</h1>
+        {{ form_start(form) }}
+        {{ form_row(form.typeOfReferral) }}
+        {{ form_row(form.diagnosis) }}
+        {{ form_row(form.additionalInformation) }}
+        <button type="submit" class="btn btn-dark">Wystaw skierowanie</button>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
