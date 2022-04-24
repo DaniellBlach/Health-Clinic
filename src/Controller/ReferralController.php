@@ -22,21 +22,24 @@ class ReferralController extends AbstractController
             'referral' => $repository->find($referral)
         ]);
     }
+
     /**
      * @Route("/add/referral/{medicalVisit}", name="add_referral")
      */
     public function add(Request $request, MedicalVisit $medicalVisit): Response
     {
-        $referral=new Referral();
+        $referral = new Referral();
         $form = $this->createForm(ReferralType::class, $referral);
         $form->handleRequest($request);
         if ($form->isSubmitted() and $form->isValid()) {
             $key = rand(1000, 9999);
             $referral
                 ->setRefferalKey($key)
-                ->setDateOfIssue(date_create(date("d-m-Y")));
+                ->setDateOfIssue(date_create(date("d-m-Y")))
+                ->setPatient($medicalVisit->getPatient())
+                ->setDoctor($medicalVisit->getDoctor());
             $medicalVisit->setReferral($referral);
-            $entityManager=$this->getDoctrine()->getManager();
+            $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($referral);
             $entityManager->flush();
             $this->addFlash('success', 'Pomyślnie wystawiono skierowanie');
