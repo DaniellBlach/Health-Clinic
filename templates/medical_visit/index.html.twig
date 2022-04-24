@@ -54,7 +54,7 @@
                         {% if is_granted('ROLE_DOCTOR') %}
                             <td>
                                 <a href="{{ path('add_referral',{medicalVisit: medicalVisit.id}) }}">
-                                    <button class="btn btn-primary">Wystaw receptę</button>
+                                    <button class="btn btn-primary">Wystaw skierowanie</button>
                                 </a>
                             </td>
                         {% else %}
