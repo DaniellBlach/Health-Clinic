@@ -42,6 +42,18 @@ class Referral
      */
     private $typeOfReferral;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Patient::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $patient;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Doctor::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $doctor;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -103,6 +115,30 @@ class Referral
     public function setTypeOfReferral(string $typeOfReferral): self
     {
         $this->typeOfReferral = $typeOfReferral;
+
+        return $this;
+    }
+
+    public function getPatient(): ?Patient
+    {
+        return $this->patient;
+    }
+
+    public function setPatient(?Patient $patient): self
+    {
+        $this->patient = $patient;
+
+        return $this;
+    }
+
+    public function getDoctor(): ?Doctor
+    {
+        return $this->doctor;
+    }
+
+    public function setDoctor(?Doctor $doctor): self
+    {
+        $this->doctor = $doctor;
 
         return $this;
     }
