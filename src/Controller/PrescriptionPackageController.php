@@ -41,7 +41,9 @@ class PrescriptionPackageController extends AbstractController
             $prescriptionPackage
                 ->setDateOfIssue(date_create(date("d-m-Y")))
                 ->setPackageCode($code)
-                ->setPackageKey($key);
+                ->setPackageKey($key)
+                ->setDoctor($medicalVisit->getDoctor())
+                ->setPatient($medicalVisit->getPatient());
             $entityManager = $this->getDoctrine()->getManager();
             $medicalVisit->setPrescriptionPackage($prescriptionPackage);
             $entityManager->persist($prescriptionPackage);
