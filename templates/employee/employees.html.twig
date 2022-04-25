@@ -37,7 +37,12 @@
                         {% endif %}
                         <td><a href="{{ path('employee_edit',{employee: employee.id}) }}">
                                 <button class="btn btn-danger">Edytuj dane</button>
-                            </a></td>
+                            </a>
+                            {% if employee.user.roles[0]=='ROLE_DOCTOR' %}
+                                <a href="{{ path('all_doctor_referrals',{doctor: employee.doctor.id}) }}">
+                                    <button class="btn btn-primary">skierowania</button>
+                                </a>
+                            {% endif %}</td>
                     </tr>
                 {% endfor %}
                 </tbody>
