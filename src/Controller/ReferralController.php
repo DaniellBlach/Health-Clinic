@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Doctor;
 use App\Entity\MedicalVisit;
+use App\Entity\Patient;
 use App\Entity\Referral;
 use App\Form\ReferralType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -20,6 +22,29 @@ class ReferralController extends AbstractController
         $repository = $this->getDoctrine()->getRepository(Referral::class);
         return $this->render('referral/index.html.twig', [
             'referral' => $repository->find($referral)
+        ]);
+    }
+    /**
+     * @Route("all/patient/referrals/{patient}", name="all_patient_referrals")
+     */
+    public function allPatientReferrals(Patient $patient): Response
+    {
+        $repository = $this->getDoctrine()->getRepository(Referral::class);
+        return $this->render('referral/all.html.twig', [
+            'referrals' => $repository->findBy(['patient'=>$patient]),
+            'DoctorReferrals' => false
+        ]);
+    }
+
+    /**
+     * @Route("all/doctor/referrals/{doctor}", name="all_doctor_referrals")
+     */
+    public function allDoctorReferrals(Doctor $doctor): Response
+    {
+        $repository = $this->getDoctrine()->getRepository(Referral::class);
+        return $this->render('referral/all.html.twig', [
+            'referrals' => $repository->findBy(['doctor'=>$doctor]),
+            'DoctorReferrals' => true
         ]);
     }
 
