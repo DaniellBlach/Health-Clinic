@@ -51,6 +51,9 @@
         <a href="{{ path('all_tests',{patient: app.user.patient.id}) }}">
             <button class="btn btn-primary">Wyniki badań</button>
         </a>
+        <a href="{{ path('all_patient_referrals',{patient: app.user.patient.id}) }}">
+            <button class="btn btn-primary">Wystawione skierowania</button>
+        </a>
         <a href="{{ path('available_visits') }}">
             <button class="btn btn-primary">Umów Wizytę</button>
         </a>
@@ -61,6 +64,9 @@
         </a>
         <a href="{{ path('doctor',{doctor: app.user.employee.doctor.id}) }}">
             <button class="btn btn-primary">Moje Dane</button>
+        </a>
+        <a href="{{ path('all_doctor_referrals',{doctor: app.user.employee.doctor.id}) }}">
+            <button class="btn btn-primary">Wystawione skierowania</button>
         </a>
     {% endif %}
     <a href="{{ path('visits') }}">

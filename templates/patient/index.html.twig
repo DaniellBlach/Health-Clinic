@@ -38,6 +38,9 @@
                             <a href="{{ path('medical_visits',{patient: patient.id}) }}">
                                 <button class="btn btn-dark">Historia leczenia</button>
                             </a>
+                            <a href="{{ path('all_patient_referrals',{patient: patient.id}) }}">
+                                <button class="btn btn-dark">Wystawione skierowania</button>
+                            </a>
                         </a>
                     {% elseif is_granted('ROLE_DOCTOR') %}
                         <a href="{{ path('all_tests',{patient: patient.id}) }}">
@@ -45,6 +48,9 @@
                         </a>
                         <a href="{{ path('medical_visits',{patient: patient.id}) }}">
                             <button class="btn btn-dark">Historia leczenia</button>
+                        </a>
+                        <a href="{{ path('all_patient_referrals',{patient: patient.id}) }}">
+                            <button class="btn btn-dark">Wystawione skierowania</button>
                         </a>
                         <a href="{{ path('add_medical_visit',{patient: patient.id, doctor: app.user.employee.doctor.id}) }}">
                             <button class="btn btn-dark">Dodaj wizytę lekarską</button>
