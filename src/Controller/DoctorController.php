@@ -30,7 +30,7 @@ class DoctorController extends AbstractController
     }
 
     /**
-     * @Route("/doctor/add", name="add_doctor")
+     * @Route("/add/doctor", name="add_doctor")
      * @IsGranted("ROLE_ADMIN")
      */
     public function add(Request $request, UserPasswordHasherInterface $userPasswordHasherInterface): Response
