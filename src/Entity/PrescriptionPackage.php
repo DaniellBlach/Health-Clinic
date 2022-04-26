@@ -44,6 +44,18 @@ class PrescriptionPackage
      */
     private $expirationDate;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=doctor::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $doctor;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=patient::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $patient;
+
     public function __construct()
     {
         $this->prescriptions = new ArrayCollection();
@@ -128,6 +140,30 @@ class PrescriptionPackage
     public function setExpirationDate(\DateTimeInterface $expirationDate): self
     {
         $this->expirationDate = $expirationDate;
+
+        return $this;
+    }
+
+    public function getDoctor(): ?doctor
+    {
+        return $this->doctor;
+    }
+
+    public function setDoctor(?doctor $doctor): self
+    {
+        $this->doctor = $doctor;
+
+        return $this;
+    }
+
+    public function getPatient(): ?patient
+    {
+        return $this->patient;
+    }
+
+    public function setPatient(?patient $patient): self
+    {
+        $this->patient = $patient;
 
         return $this;
     }

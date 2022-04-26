@@ -42,6 +42,9 @@
                                 <a href="{{ path('all_doctor_referrals',{doctor: employee.doctor.id}) }}">
                                     <button class="btn btn-primary">skierowania</button>
                                 </a>
+                                <a href="{{ path('all_doctor_prescription_packages',{doctor: employee.doctor.id}) }}">
+                                    <button class="btn btn-primary">Recepty</button>
+                                </a>
                             {% endif %}</td>
                     </tr>
                 {% endfor %}
