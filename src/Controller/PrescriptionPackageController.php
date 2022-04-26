@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Doctor;
 use App\Entity\MedicalVisit;
+use App\Entity\Patient;
 use App\Entity\PrescriptionPackage;
 use App\Form\PrescriptionPackageType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -23,6 +25,32 @@ class PrescriptionPackageController extends AbstractController
         return $this->render('prescription_package/index.html.twig', [
             'package' => $package,
             'prescriptions' => $prescriptions
+        ]);
+    }
+
+    /**
+     * @Route("/all/doctor/prescription/packages/{doctor}", name="all_doctor_prescription_packages")
+     */
+    public function allDoctorPrescriptionPackages(Doctor $doctor): Response
+    {
+        $repository = $this->getDoctrine()->getRepository(PrescriptionPackage::class);
+        $prescriptionPackages = $repository->findby(['doctor' => $doctor]);
+        return $this->render('prescription_package/all.html.twig', [
+            'prescriptionPackages' => $prescriptionPackages,
+            'doctorPrescriptionPackages'=>true
+        ]);
+    }
+
+    /**
+     * @Route("/all/patient/prescription/packages/{patient}", name="all_patient_prescription_packages")
+     */
+    public function allPatientPrescriptionPackages(Patient $patient): Response
+    {
+        $repository = $this->getDoctrine()->getRepository(PrescriptionPackage::class);
+        $prescriptionPackages = $repository->findby(['patient' => $patient]);
+        return $this->render('prescription_package/all.html.twig', [
+            'prescriptionPackages' => $prescriptionPackages,
+            'doctorPrescriptionPackages'=>false
         ]);
     }
 
