@@ -7,125 +7,125 @@
             {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_EMPLOYEE') %}
                 <li class="nav-item">
                     <a href="{{ path('employees') }}" class="nav-link">
-                        <button class="btn btn-primary">Pracownicy</button>
+                        <button class="btn btn-primary"><i class="fa-solid fa-people-carry-box"></i> Pracownicy</button>
                     </a>
                 </li>
                 {% if is_granted('ROLE_ADMIN') %}
                     <li class="nav-item">
                         <a href="{{ path('add_employee') }}" class="nav-link">
-                            <button class="btn btn-primary">Dodaj pracownika</button>
+                            <button class="btn btn-primary"><i class="fa-solid fa-user-tie"></i> Dodaj pracownika</button>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="{{ path('add_doctor') }}" class="nav-link">
-                            <button class="btn btn-primary">Dodaj lekarza</button>
+                            <button class="btn btn-primary"><i class="fa-solid fa-user-doctor"></i> Dodaj lekarza</button>
                         </a>
                     </li>
                 {% endif %}
                 <li class="nav-item">
                     <a href="{{ path('patients') }}" class="nav-link">
-                        <button class="btn btn-primary">Pacjenci</button>
+                        <button class="btn btn-primary"><i class="fa-solid fa-user-injured"></i> Pacjenci</button>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ path('available_visits') }}" class="nav-link">
-                        <button class="btn btn-primary">Dostępne terminy wizyt</button>
+                        <button class="btn btn-primary"><i class="fa-solid fa-calendar-day"></i> Dostępne terminy wizyt</button>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ path('visits') }}" class="nav-link">
-                        <button class="btn btn-primary">Umówione terminy wizyt</button>
+                        <button class="btn btn-primary"><i class="fa-solid fa-calendar-days"></i> Umówione terminy wizyt</button>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ path('add_visits') }}" class="nav-link">
-                        <button class="btn btn-primary">Dodaj nowe terminy wizyt</button>
+                        <button class="btn btn-primary"><i class="fa-solid fa-calendar-check"></i> Dodaj nowe terminy wizyt</button>
                     </a>
                 </li>
                 <li class="border-top my-3"></li>
                 <li class="nav-item">
                     <a href="{{ path('employee') }}" class="nav-link">
-                        <button class="btn btn-primary">Moje Dane</button>
+                        <button class="btn btn-primary"><i class="fa-solid fa-user-nurse"></i> Moje Dane</button>
                     </a>
                 </li>
             {% elseif is_granted('ROLE_PATIENT') %}
 
                 <li class="nav-item">
                     <a href="{{ path('medical_visits',{patient: app.user.patient.id}) }}" class="nav-link">
-                        <button class="btn btn-primary">Historia leczenia</button>
+                        <button class="btn btn-primary"><i class="fa-solid fa-book-medical"></i> Historia leczenia</button>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ path('all_tests',{patient: app.user.patient.id}) }}" class="nav-link">
-                        <button class="btn btn-primary">Wyniki badań</button>
+                        <button class="btn btn-primary"><i class="fa-solid fa-file-waveform"></i> Wyniki badań</button>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ path('all_patient_referrals',{patient: app.user.patient.id}) }}" class="nav-link">
-                        <button class="btn btn-primary">Wystawione skierowania</button>
+                        <button class="btn btn-primary"><i class="fa-solid fa-file-medical"></i> Wystawione skierowania</button>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ path('all_patient_prescription_packages',{patient: app.user.patient.id}) }}"
                        class="nav-link">
-                        <button class="btn btn-primary">Wystawione Recepty</button>
+                        <button class="btn btn-primary"><i class="fa-solid fa-receipt"></i> Wystawione Recepty</button>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ path('available_visits') }}" class="nav-link">
-                        <button class="btn btn-primary">Umów Wizytę lekarską</button>
+                        <button class="btn btn-primary"><i class="fa-solid fa-calendar-day"></i> Umów Wizytę lekarską</button>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ path('visits') }}" class="nav-link">
-                        <button class="btn btn-primary">Umówione terminy wizyt</button>
+                        <button class="btn btn-primary"><i class="fa-solid fa-calendar-days"></i> Umówione terminy wizyt</button>
                     </a>
                 </li>
                 <li class="border-top my-3"></li>
                 <li class="nav-item">
                     <a href="{{ path('patient',{patient: app.user.patient.id}) }}" class="nav-link link-dark">
-                        <button class="btn btn-primary">Moje Dane</button>
+                        <button class="btn btn-primary"><i class="fa-solid fa-user"></i> Moje konto</button>
                     </a>
                 </li>
             {% elseif is_granted('ROLE_DOCTOR') %}
 
                 <li class="nav-item">
                     <a href="{{ path('patients') }}" class="nav-link">
-                        <button class="btn btn-primary">Pacjenci</button>
+                        <button class="btn btn-primary"><i class="fa-solid fa-user-injured"></i> Pacjenci</button>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ path('all_doctor_referrals',{doctor: app.user.employee.doctor.id}) }}" class="nav-link">
-                        <button class="btn btn-primary">Wystawione skierowania</button>
+                        <button class="btn btn-primary"><i class="fa-solid fa-file-medical"></i> Wystawione skierowania</button>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ path('all_doctor_prescription_packages',{doctor: app.user.employee.doctor.id}) }}"
                        class="nav-link">
-                        <button class="btn btn-primary">Wystawione Recepty</button>
+                        <button class="btn btn-primary"><i class="fa-solid fa-receipt"></i> Wystawione Recepty</button>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ path('available_visits') }}" class="nav-link">
-                        <button class="btn btn-primary">Dostępne terminy wizyt</button>
+                        <button class="btn btn-primary"><i class="fa-solid fa-calendar-day"></i> Dostępne terminy wizyt</button>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ path('visits') }}" class="nav-link">
-                        <button class="btn btn-primary">Umówione terminy wizyt</button>
+                        <button class="btn btn-primary"><i class="fa-solid fa-calendar-days"></i> Umówione terminy wizyt</button>
                     </a>
                 </li>
                 <li class="border-top my-3"></li>
                 <li class="nav-item">
                     <a href="{{ path('doctor',{doctor: app.user.employee.doctor.id}) }}" class="nav-link">
-                        <button class="btn btn-primary">Moje Dane</button>
+                        <button class="btn btn-primary"><i class="fa-solid fa-user-doctor"></i> Moje Dane</button>
                     </a>
                 </li>
             {% endif %}
             <li class="border-top my-3"></li>
             <li class="nav-item text-center">
                 <a href="{{ path('app_logout') }}" class="nav-link">
-                    <button class="btn btn-danger">Wyloguj</button>
+                    <button class="btn btn-danger"><i class="fa-solid fa-right-from-bracket"></i> Wyloguj</button>
                 </a>
             </li>
         </ul>
