@@ -1,3 +1,4 @@
+{% from "layouts/sidebar.html.twig" import sidebar %}
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -12,7 +13,6 @@
     {% endblock %}
 </head>
 <body>
-<h1><a href="{{ path('index') }}" class="link-dark">Przychodnia lekarska</a></h1>
 {% if is_granted('IS_ANONYMOUS') %}
     <a href="{{ path('app_login') }}">
         <button class="btn btn-primary">Zaloguj się</button>
@@ -20,67 +20,8 @@
     <a href="{{ path('register') }}">
         <button class="btn btn-info">Zarejestruj się</button>
     </a>
-{% endif %}
-{% if is_granted('IS_AUTHENTICATED_FULLY') %}
-    {% if is_granted('ROLE_ADMIN') %}
-        <a href="{{ path('patients') }}">
-            <button class="btn btn-primary">Pacjenci</button>
-        </a>
-        <a href="{{ path('employees') }}">
-            <button class="btn btn-primary">Pracownicy</button>
-        </a>
-        <a href="{{ path('employee') }}">
-            <button class="btn btn-primary">Moje Dane</button>
-        </a>
-
-    {% elseif is_granted('ROLE_EMPLOYEE') %}
-        <a href="{{ path('patients') }}">
-            <button class="btn btn-primary">Pacjenci</button>
-        </a>
-        <a href="{{ path('employee') }}">
-            <button class="btn btn-primary">Moje Dane</button>
-        </a>
-
-    {% elseif is_granted('ROLE_PATIENT') %}
-        <a href="{{ path('patient',{patient: app.user.patient.id}) }}">
-            <button class="btn btn-primary">Moje Dane</button>
-        </a>
-        <a href="{{ path('medical_visits',{patient: app.user.patient.id}) }}">
-            <button class="btn btn-primary">Historia leczenia</button>
-        </a>
-        <a href="{{ path('all_tests',{patient: app.user.patient.id}) }}">
-            <button class="btn btn-primary">Wyniki badań</button>
-        </a>
-        <a href="{{ path('all_patient_referrals',{patient: app.user.patient.id}) }}">
-            <button class="btn btn-primary">Wystawione skierowania</button>
-        </a>
-        <a href="{{ path('all_patient_prescription_packages',{patient: app.user.patient.id}) }}">
-            <button class="btn btn-primary">Wystawione Recepty</button>
-        </a>
-        <a href="{{ path('available_visits') }}">
-            <button class="btn btn-primary">Umów Wizytę</button>
-        </a>
-
-    {% elseif is_granted('ROLE_DOCTOR') %}
-        <a href="{{ path('patients') }}">
-            <button class="btn btn-primary">Pacjenci</button>
-        </a>
-        <a href="{{ path('doctor',{doctor: app.user.employee.doctor.id}) }}">
-            <button class="btn btn-primary">Moje Dane</button>
-        </a>
-        <a href="{{ path('all_doctor_referrals',{doctor: app.user.employee.doctor.id}) }}">
-            <button class="btn btn-primary">Wystawione skierowania</button>
-        </a>
-        <a href="{{ path('all_doctor_prescription_packages',{doctor: app.user.employee.doctor.id}) }}">
-            <button class="btn btn-primary">Wystawione Recepty</button>
-        </a>
-    {% endif %}
-    <a href="{{ path('visits') }}">
-        <button class="btn btn-primary">Wizyty Lekarskie</button>
-    </a>
-    <a href="{{ path('app_logout') }}">
-        <button class="btn btn-danger">Wyloguj</button>
-    </a>
+{% elseif is_granted('IS_AUTHENTICATED_FULLY') %}
+    {{ sidebar() }}
     {% for message in app.flashes('success') %}
         <div class="alert alert-success">
             {{ message }}
