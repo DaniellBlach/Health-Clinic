@@ -1,0 +1,36 @@
+$primary:#1b4a01;
+
+.sidebar {
+  background-color: $primary;
+  width: 20%;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  @media screen and (max-width: 1000px){
+    width: 200px;
+  }
+  .nav-item {
+    border-radius: 5px;
+   &:hover{
+     background-color: white;
+   }
+    .nav-link {
+      &:hover button{
+        color: $primary;
+      }
+      button {
+        font-size: 18px;
+        color: white;
+        box-shadow: none;
+      }
+    }
+  }
+  .logout{
+    button {
+      background-color: white;
+      color: $primary;
+      border: none;
+      font-size: 20px;
+    }
+  }
+}

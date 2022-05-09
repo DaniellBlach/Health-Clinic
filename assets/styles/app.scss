@@ -1,6 +1,11 @@
 @import "~bootstrap/scss/bootstrap";
 @import "~flatpickr/dist/flatpickr.css";
 @import "~flatpickr/dist/themes/dark.css";
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/brands';
+@import "./assets/styles/sidebar";
 
 body {
   a {
