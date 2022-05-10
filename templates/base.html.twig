@@ -23,12 +23,12 @@
 {% elseif is_granted('IS_AUTHENTICATED_FULLY') %}
     {{ sidebar() }}
     {% for message in app.flashes('success') %}
-        <div class="alert alert-success">
+        <div class="d-none" id="successFlashMessage">
             {{ message }}
         </div>
     {% endfor %}
     {% for message in app.flashes('error') %}
-        <div class="alert alert-danger">
+        <div class="d-none" id="errorFlashMessage">
             {{ message }}
         </div>
     {% endfor %}
