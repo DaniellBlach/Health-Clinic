@@ -10,4 +10,5 @@ import './styles/app.scss';
 
 // start the Stimulus application
 import './javascript/flatpickr';
+import './javascript/toast'
 import 'bootstrap';
