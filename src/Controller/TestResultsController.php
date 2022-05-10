@@ -72,6 +72,7 @@ class TestResultsController extends AbstractController
                 $entityManager->persist($testResults);
                 $entityManager->flush();
                 $this->addFlash('success', 'Pomyślnie dodano wyniki testu');
+                return $this->redirectToRoute('patient', ['patient' => $patient->getId()]);
             }
         }
         return $this->render('test_results/add.html.twig', [
