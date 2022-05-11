@@ -14,12 +14,6 @@
 </head>
 <body class="d-flex">
 {% if is_granted('IS_ANONYMOUS') %}
-    <a href="{{ path('app_login') }}">
-        <button class="btn btn-primary">Zaloguj się</button>
-    </a>
-    <a href="{{ path('register') }}">
-        <button class="btn btn-info">Zarejestruj się</button>
-    </a>
 {% elseif is_granted('IS_AUTHENTICATED_FULLY') %}
     {{ sidebar() }}
     {% for message in app.flashes('success') %}
