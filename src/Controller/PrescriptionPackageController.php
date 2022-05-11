@@ -37,7 +37,7 @@ class PrescriptionPackageController extends AbstractController
         $prescriptionPackages = $repository->findby(['doctor' => $doctor]);
         return $this->render('prescription_package/all.html.twig', [
             'prescriptionPackages' => $prescriptionPackages,
-            'doctorPrescriptionPackages'=>true
+            'doctorPrescriptionPackages' => true
         ]);
     }
 
@@ -50,7 +50,7 @@ class PrescriptionPackageController extends AbstractController
         $prescriptionPackages = $repository->findby(['patient' => $patient]);
         return $this->render('prescription_package/all.html.twig', [
             'prescriptionPackages' => $prescriptionPackages,
-            'doctorPrescriptionPackages'=>false
+            'doctorPrescriptionPackages' => false
         ]);
     }
 
@@ -63,21 +63,30 @@ class PrescriptionPackageController extends AbstractController
         $form = $this->createForm(PrescriptionPackageType::class, $prescriptionPackage);
         $form->handleRequest($request);
         if ($form->isSubmitted() and $form->isValid()) {
-            $key = rand(1000, 9999);
-            $pesel = $medicalVisit->getPatient()->getPesel();
-            $code = $key . $pesel;
-            $prescriptionPackage
-                ->setDateOfIssue(date_create(date("d-m-Y")))
-                ->setPackageCode($code)
-                ->setPackageKey($key)
-                ->setDoctor($medicalVisit->getDoctor())
-                ->setPatient($medicalVisit->getPatient());
-            $entityManager = $this->getDoctrine()->getManager();
-            $medicalVisit->setPrescriptionPackage($prescriptionPackage);
-            $entityManager->persist($prescriptionPackage);
-            $entityManager->flush();
-            $this->addFlash('success', 'Pomyślnie wystawiono receptę');
-            return $this->redirectToRoute('prescription_package', ['package' => $prescriptionPackage->getId()]);
+            $timeBetweenDates = (array)date_diff($form->get('expirationDate')->getData(), date_create(date("d-m-Y")));
+            if ($form->get('expirationDate')->getData() < date_create(date("d-m-Y"))) {
+                $this->addFlash('error', 'Podano niewłaściwą datę ważności');
+            } elseif ($timeBetweenDates['days'] < 7) {
+                $this->addFlash('error', 'Minimalna data ważności wynosi 7 dni');
+            } elseif ($timeBetweenDates['days'] > 365) {
+                $this->addFlash('error', 'Maksymalna data ważności wynosi 365 dni');
+            } else {
+                $key = rand(1000, 9999);
+                $pesel = $medicalVisit->getPatient()->getPesel();
+                $code = $key . $pesel;
+                $prescriptionPackage
+                    ->setDateOfIssue(date_create(date("d-m-Y")))
+                    ->setPackageCode($code)
+                    ->setPackageKey($key)
+                    ->setDoctor($medicalVisit->getDoctor())
+                    ->setPatient($medicalVisit->getPatient());
+                $entityManager = $this->getDoctrine()->getManager();
+                $medicalVisit->setPrescriptionPackage($prescriptionPackage);
+                $entityManager->persist($prescriptionPackage);
+                $entityManager->flush();
+                $this->addFlash('success', 'Pomyślnie wystawiono receptę');
+                return $this->redirectToRoute('prescription_package', ['package' => $prescriptionPackage->getId()]);
+            }
         }
         return $this->render('prescription_package/add.html.twig', [
             'form' => $form->createView()

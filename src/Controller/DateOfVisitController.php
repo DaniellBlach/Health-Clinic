@@ -81,14 +81,16 @@ class DateOfVisitController extends AbstractController
             $endTime = $form->get('endTime')->getData();
             $howManyWorkTime = ($endTime->format("H") * 60 + $endTime->format("i")) - ($startTime->format("H") * 60 + $startTime->format("i"));
             $howManyVisits = floor($howManyWorkTime / 20);
-            if ($howManyVisits > 0) {
-                for ($i = 0; $i < $howManyVisits; $i++) {
+            if ($form->get('date')->getData() < date_create(date("d-m-Y"))) {
+                $this->addFlash('error', 'Podano błędną datę');
+            } elseif ($howManyVisits > 0) {
+                for ($i=0; $i < $howManyVisits; $i++) {
                     $this->createVisit($doctor, $date, $startTime);
                     date_add($startTime, date_interval_create_from_date_string("20 minutes"));
                 }
-                $this->addFlash('success', 'Pomyślnie dodano terminy wizyt');
+                $this->addFlash('success', 'Pomyślnie dodano terminy wizyt!');
             } else {
-                $this->addFlash('error', 'Podano błędne dane');
+                $this->addFlash('error', 'Podano błędne godziny');
             }
         }
         return $this->render('date_of_visit/add.html.twig', [

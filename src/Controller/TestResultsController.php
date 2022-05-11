@@ -64,11 +64,16 @@ class TestResultsController extends AbstractController
         $form = $this->createForm(TestResultsType::class, $testResults);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $testResults->setPatient($patient);
-            $entityManager->persist($testResults);
-            $entityManager->flush();
-            $this->addFlash('success', 'Pomyślnie dodano wyniki testu');
+            if ($form->get('date')->getData() > date_create(date("d-m-Y"))) {
+                $this->addFlash('error', 'Podano niewłaściwą datę');
+            } else {
+                $entityManager = $this->getDoctrine()->getManager();
+                $testResults->setPatient($patient);
+                $entityManager->persist($testResults);
+                $entityManager->flush();
+                $this->addFlash('success', 'Pomyślnie dodano wyniki testu');
+                return $this->redirectToRoute('patient', ['patient' => $patient->getId()]);
+            }
         }
         return $this->render('test_results/add.html.twig', [
             'form' => $form->createView(),
