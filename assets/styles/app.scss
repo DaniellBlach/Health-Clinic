@@ -14,20 +14,38 @@ body {
     text-decoration: none;
   }
 }
-.toast-success{
+
+.toast-success {
   background-color: #1b4a01;
   font-size: 18px;
 }
-.toast-error{
+
+.toast-error {
   background-color: #930A05;
   font-size: 18px;
 }
-.btn-green{
+
+.btn-green {
   color: white;
   background-color: #1b4a01;
-  &:hover{
+
+  &:hover {
     color: white;
     background-color: #143900;
     box-shadow: 0 4px 30px rgba(27, 74, 1, 0.2);
+  }
+}
+
+.text-green {
+  color: #1b4a01;
+
+  &:hover {
+    color: #1b4a01;
+  }
+}
+
+.btn {
+  &:focus {
+    box-shadow: none;
   }
 }
