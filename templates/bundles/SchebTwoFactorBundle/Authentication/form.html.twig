@@ -1,36 +1,41 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-<div class="container-sm w-25">
-    <h1 >Autoryzacja</h1>
-    {# Authentication errors #}
-    {% if authenticationError %}
-        <p>{{ authenticationError|trans(authenticationErrorData, 'SchebTwoFactorBundle') }}</p>
-    {% endif %}
+    <div class="container-sm w-75 d-flex form">
+        <div class="row ms-3">
+            <h1 class="mt-5 text-center mb-0">Autoryzacja</h1>
+            {% if authenticationError %}
+                <p class="text-danger">Podano niewłaściwy kod</p>
+            {% endif %}
 
-    <form class="form" action="{{ checkPathUrl ? checkPathUrl: path(checkPathRoute) }}" method="post">
-        <label for="_auth_code">Kod uwirzytelniający</label>
-        <p class="widget">
-            <input
-                    id="_auth_code"
-                    class="form-control"
-                    type="text"
-                    name="{{ authCodeParameterName }}"
-                    autocomplete="one-time-code"
-                    autofocus
-            />
-        </p>
+            <form class="mb-5" action="{{ checkPathUrl ? checkPathUrl: path(checkPathRoute) }}" method="post">
+                <label for="_auth_code"><h6>Kod uwirzytelniający</h6></label>
+                <p class="widget">
+                    <input
+                            id="_auth_code"
+                            class="form-control"
+                            type="text"
+                            name="{{ authCodeParameterName }}"
+                            autocomplete="one-time-code"
+                            autofocus
+                    />
+                </p>
 
-        {% if displayTrustedOption %}
-            <p class="widget"><label for="_trusted"><input id="_trusted" type="checkbox"
-                                                           name="{{ trustedParameterName }}"/> {{ "Używam zaufanego urządzenia"|trans({}, 'SchebTwoFactorBundle') }}
-                </label></p>
-        {% endif %}
-        {% if isCsrfProtectionEnabled %}
-            <input type="hidden" name="{{ csrfParameterName }}" value="{{ csrf_token(csrfTokenId) }}">
-        {% endif %}
-        <p class="submit"><input type="submit" class="btn btn-dark" value="{{ "Zaloguj się"|trans({}, 'SchebTwoFactorBundle') }}"/></p>
-    </form>
-
-    <p class="cancel"><a href="{{ logoutPath }}">{{ "Wróć na stronę główną"|trans({}, 'SchebTwoFactorBundle') }}</a></p>
-</div>
+                {% if displayTrustedOption %}
+                    <p class="widget"><label for="_trusted"></label><input id="_trusted" type="checkbox"
+                                                                   name="{{ trustedParameterName }}"/> {{ "Używam zaufanego urządzenia"|trans({}, 'SchebTwoFactorBundle') }}
+                        </p>
+                {% endif %}
+                {% if isCsrfProtectionEnabled %}
+                    <input type="hidden" name="{{ csrfParameterName }}" value="{{ csrf_token(csrfTokenId) }}">
+                {% endif %}
+                <p class="submit "><input type="submit" class="btn btn-green"
+                                         value="{{ "Zaloguj się"|trans({}, 'SchebTwoFactorBundle') }}"/></p>
+                <p class="cancel mb-xl-5"><a class="text-green"
+                                             href="{{ logoutPath }}">{{ "Wróć na stronę główną"|trans({}, 'SchebTwoFactorBundle') }}</a></p>
+            </form>
+        </div>
+        <div class="row">
+            <img class="img-fluid pt-2 pb-2" src="/images/auth.svg" alt="login image">
+        </div>
+    </div>
 {% endblock %}
