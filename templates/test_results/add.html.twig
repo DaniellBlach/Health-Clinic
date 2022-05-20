@@ -3,7 +3,9 @@
 {% block title %}Dodaj wyniki testów{% endblock %}
 
 {% block body %}
-    <div class="container w-25">
+<div class="container w-25">
+    <div class="container form" style="margin-top:100px;">
+        <h1 class="text-center">Dodaj wyniki badań</h1>
         <div>
             <h3>Dane Pacjenta</h3>
             <p>Imię i nazwisko: {{ patient}}</p>
@@ -17,7 +19,8 @@
         {{ form_row(form.leukocytes) }}
         {{ form_row(form.lymphocytes) }}
         {{ form_row(form.erythrocytes) }}
-        <button type="submit" class="btn btn-dark mt-2">Dodaj wyniki badań</button>
+        <button type="submit" class="btn btn-green mt-2 mb-4">Dodaj wyniki badań</button>
         {{ form_end(form) }}
+    </div>
     </div>
 {% endblock %}

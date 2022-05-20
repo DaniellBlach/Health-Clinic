@@ -3,7 +3,8 @@
 {% block title %}Edycja danych pacjenta{% endblock %}
 
 {% block body %}
-    <div class="container-sm w-25">
+    <div class="container w-25">
+    <div class="container form" style="margin-top:100px;">
         <h1 class="text-center">Edytuj dane</h1>
         {{ form_start(form) }}
         {{ form_row((form.name)) }}
@@ -13,7 +14,8 @@
         {{ form_row(form.sex) }}
         {{ form_row(form.phoneNumber) }}
         {{ form_row(form.doctorOfFirstContact) }}
-        <button type="submit" class="btn btn-primary">Zapisz</button>
+        <button type="submit" class="btn btn-green mt-2 mb-4">Zapisz</button>
         {{ form_end(form) }}
+    </div>
     </div>
 {% endblock %}

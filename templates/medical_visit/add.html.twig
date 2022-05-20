@@ -3,7 +3,8 @@
 {% block title %}Dodaj wizytę lekarską{% endblock %}
 
 {% block body %}
-    <div class="container-sm w-25">
+<div class="container w-25">
+    <div class="container form" style="margin-top:100px;">
         <h1 class="text-center">Dodaj wizytę</h1>
         <p>Pacjent: {{ patient }}</p>
         <p>Pesel: {{ patient.pesel }}</p>
@@ -12,7 +13,8 @@
         {{ form_row(form.diagnosis) }}
         {{ form_row(form.recommendations) }}
         {{ form_row(form.additionalInformation) }}
-        <button type="submit" class="btn btn-dark">Dodaj wizytę</button>
+        <button type="submit" class="btn btn-green mt-2 mb-4">Dodaj wizytę</button>
         {{ form_end(form) }}
+    </div>
     </div>
 {% endblock %}

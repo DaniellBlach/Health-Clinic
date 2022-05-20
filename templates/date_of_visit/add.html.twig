@@ -3,14 +3,16 @@
 {% block title %}Dodaj Wizytę{% endblock %}
 
 {% block body %}
-    <div class="container-sm w-25">
-        <h1>Dodaj Wizyty</h1>
-        {{ form_start(form) }}
+    <div class="container w-25">
+        <div class="container form" style="margin-top:150px;">
+            <h1 class="text-center">Dodaj terminy wizyt</h1>
+            {{ form_start(form) }}
             {{ form_row(form.Doctor) }}
             {{ form_row(form.date) }}
             {{ form_row(form.startTime) }}
             {{ form_row(form.endTime) }}
-        <button type="submit" class="btn btn-dark mt-2">Dodaj Wizyty</button>
-        {{ form_end(form) }}
+            <button type="submit" class="btn btn-green mt-2 mb-4">Dodaj Wizyty</button>
+            {{ form_end(form) }}
+        </div>
     </div>
 {% endblock %}

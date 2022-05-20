@@ -3,23 +3,24 @@
 {% block title %}Edycja dane pracownika{% endblock %}
 
 {% block body %}
-    <div class="container-sm w-25">
-        <h1 class="text-center">Edytuj dane</h1>
-        {{ form_start(form) }}
-        {{ form_row((form.name)) }}
-        {{ form_row((form.surname)) }}
-        {{ form_rest(form) }}
-        {% if employee.doctor!=null %}
-            {{ form_start(doctorForm) }}
-            {{ form_row((doctorForm.specialization)) }}
-            {{ form_row((doctorForm.licenseNumber)) }}
-            {{ form_rest(doctorForm) }}
-            <button type="submit" class="btn btn-primary">Zapisz</button>
-            {{ form_end(doctorForm) }}
+    <div class="container w-25">
+        <div class="container form" style="margin-top:100px;">
+            <h1 class="text-center">Edytuj dane</h1>
+            {{ form_start(form) }}
+            {{ form_row((form.name)) }}
+            {{ form_row((form.surname)) }}
+            {{ form_rest(form) }}
+            {% if employee.doctor!=null %}
+                {{ form_start(doctorForm) }}
+                {{ form_row((doctorForm.specialization)) }}
+                {{ form_row((doctorForm.licenseNumber)) }}
+                {{ form_rest(doctorForm) }}
+
+                {{ form_end(doctorForm) }}
+            {% endif %}
+            <button type="submit" class="btn btn-green mt-2 mb-4">Zapisz</button>
             {{ form_end(form) }}
-        {% else %}
-            <button type="submit" class="btn btn-primary">Zapisz</button>
-            {{ form_end(form) }}
-        {% endif %}
+
+        </div>
     </div>
 {% endblock %}
