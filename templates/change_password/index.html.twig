@@ -3,11 +3,13 @@
 {% block title %}Zmiana Hasła{% endblock %}
 
 {% block body %}
-    <div class="container-sm w-25">
-        <h1>Zmiana hasła</h1>
-        {{ form_start(form) }}
-        {{ form_row(form.plainPassword) }}
-        <button type="submit" class="btn btn-dark mt-2">Zmień hasło</button>
-        {{ form_end(form) }}
+    <div class="container w-25">
+        <div class="container form" style="margin-top:150px;">
+            <h1>Zmiana hasła</h1>
+            {{ form_start(form) }}
+            {{ form_row(form.plainPassword) }}
+            <button type="submit" class="btn btn-green mt-2 mb-4">Zmień hasło</button>
+            {{ form_end(form) }}
+        </div>
     </div>
 {% endblock %}
