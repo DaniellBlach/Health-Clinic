@@ -39,7 +39,7 @@
         </table>
         {% if is_granted('ROLE_DOCTOR') %}
             <a href="{{ path('add_prescription',{prescriptionPackage: package.id}) }}">
-                <button class="btn btn-primary">Dodaj lek</button>
+                <button class="btn btn-green">Dodaj lek</button>
             </a>
         {% endif %}
     </div>
