@@ -3,66 +3,76 @@
 {% block title %}Dane Pacjenta{% endblock %}
 {% block body %}
     <div class="container w-50">
-        <div class="card mt-4 shadow">
-            <div class="card-header">
-                <div class="d-flex justify-content-between">
+        <div class="card shadow">
+            <div class="card-header" style="background-color: #1b4a01">
+                <div class="d-flex justify-content-between text-white">
                     <h5>{{ patient }}</h5>
                     <h5>Data dołączenia {{ patient.dateOfJoining|date("d/m/Y") }}</h5>
                 </div>
             </div>
-            <div class="card-body">
+            <div class="card-body text-green">
                 <p>Pesel: {{ patient.pesel }}</p>
                 <p>Data urodzenia: {{ patient.dateOfBirth|date("d/m/Y") }}</p>
                 <p>Płeć: {{ patient.sex }}</p>
                 <p>Numer Telefonu: {{ patient.phoneNumber }}</p>
                 <p>Lekarz pierwszego kontaktu: {{ patient.doctorOfFirstContact }}</p>
                 <h5>Operacje</h5>
-                <p>
 
-                    {% if is_granted('ROLE_PATIENT') %}
+                {% if is_granted('ROLE_PATIENT') %}
+                    <p>
                         <a href="{{ path('change_password') }}">
-                            <button class="btn btn-dark">Zmień hasło</button>
+                            <button class="btn btn-green">Zmień hasło</button>
                         </a>
                         <a href="{{ path('patient_edit',{patient: patient.id}) }}">
-                            <button class="btn btn-dark">Edytuj dane</button>
+                            <button class="btn btn-green">Edytuj dane</button>
                         </a>
-                    {% elseif is_granted('ROLE_EMPLOYEE') or is_granted('ROLE_ADMIN') %}
+                    </p>
+                {% elseif is_granted('ROLE_EMPLOYEE') or is_granted('ROLE_ADMIN') %}
+                    <p>
                         <a href="{{ path('add_test_results',{patient: patient.id}) }}">
-                            <button class="btn btn-dark">Dodaj Wyniki badań</button>
+                            <button class="btn btn-green">Dodaj Wyniki badań</button>
                         </a>
                         <a href="{{ path('patient_edit',{patient: patient.id}) }}">
-                            <button class="btn btn-dark">Edytuj dane</button>
-                            <a href="{{ path('all_tests',{patient: patient.id}) }}">
-                                <button class="btn btn-dark">Zobacz Badania</button>
-                            </a>
-                            <a href="{{ path('medical_visits',{patient: patient.id}) }}">
-                                <button class="btn btn-dark">Historia leczenia</button>
-                            </a>
-                            <a href="{{ path('all_patient_referrals',{patient: patient.id}) }}">
-                                <button class="btn btn-dark">Wystawione skierowania</button>
-                            </a>
-                            <a href="{{ path('all_patient_prescription_packages',{patient: patient.id}) }}">
-                                <button class="btn btn-dark">Wystawione Recepty</button>
-                            </a>
+                            <button class="btn btn-green">Edytuj dane</button>
                         </a>
-                    {% elseif is_granted('ROLE_DOCTOR') %}
+                    </p>
+                    <h5>Informacje dodatkowe</h5>
+                    <p>
                         <a href="{{ path('all_tests',{patient: patient.id}) }}">
-                            <button class="btn btn-dark">Zobacz Badania</button>
+                            <button class="btn btn-green">Zobacz wyniki badań</button>
                         </a>
                         <a href="{{ path('medical_visits',{patient: patient.id}) }}">
-                            <button class="btn btn-dark">Historia leczenia</button>
+                            <button class="btn btn-green">Historia leczenia</button>
                         </a>
                         <a href="{{ path('all_patient_referrals',{patient: patient.id}) }}">
-                            <button class="btn btn-dark">Wystawione skierowania</button>
+                            <button class="btn btn-green">Wystawione skierowania</button>
                         </a>
                         <a href="{{ path('all_patient_prescription_packages',{patient: patient.id}) }}">
-                            <button class="btn btn-dark">Wystawione Recepty</button>
+                            <button class="btn btn-green">Wystawione Recepty</button>
                         </a>
+                    </p>
+                {% elseif is_granted('ROLE_DOCTOR') %}
+                    <p>
                         <a href="{{ path('add_medical_visit',{patient: patient.id, doctor: app.user.employee.doctor.id}) }}">
-                            <button class="btn btn-dark">Dodaj wizytę lekarską</button>
+                            <button class="btn btn-green">Dodaj wizytę lekarską</button>
                         </a>
-                    {% endif %}
-                </p>
+                    </p>
+                    <h5>Informacje dodatkowe</h5>
+                    <p>
+                        <a href="{{ path('all_tests',{patient: patient.id}) }}">
+                            <button class="btn btn-green">Zobacz wyniki badań</button>
+                        </a>
+                        <a href="{{ path('medical_visits',{patient: patient.id}) }}">
+                            <button class="btn btn-green">Historia leczenia</button>
+                        </a>
+                        <a href="{{ path('all_patient_referrals',{patient: patient.id}) }}">
+                            <button class="btn btn-green">Wystawione skierowania</button>
+                        </a>
+                        <a href="{{ path('all_patient_prescription_packages',{patient: patient.id}) }}">
+                            <button class="btn btn-green">Wystawione Recepty</button>
+                        </a>
+                    </p>
+                {% endif %}
             </div>
         </div>
     </div>
