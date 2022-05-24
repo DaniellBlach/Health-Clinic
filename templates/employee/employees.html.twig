@@ -3,61 +3,66 @@
 {% block title %}Pracownicy{% endblock %}
 
 {% block body %}
-    <div class="example-wrapper">
-        <div class="container-fluid w-75">
-            <h1 class="text-center">Pracownicy</h1>
-            <table class="table table-dark">
-                <thead>
+    <div class="container-sm w-75">
+        <table class="table table-green">
+            <thead>
+            <tr>
+                <td colspan="8"><h1 class="text-center">Pracownicy</h1></td>
+            </tr>
+            <tr>
+                <th scope="col">Imię</th>
+                <th scope="col">Nazwisko</th>
+                <th scope="col">Rola</th>
+                <th scope="col">Specializacja</th>
+                <th scope="col">Numer prawa wykonywania zawodu</th>
+                <th scope="col">Operacje</th>
+                <th scope="col">Skierowania</th>
+                <th scope="col">Recepty</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for employee in employees %}
                 <tr>
-                    <th scope="col">Imię</th>
-                    <th scope="col">Nazwisko</th>
-                    <th scope="col">Rola</th>
-                    <th scope="col">Specializacja</th>
-                    <th scope="col">Numer prawa wykonywania zawodu</th>
-                    <th scope="col">Operacje</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for employee in employees %}
-                    <tr>
-                        <td>{{ employee.name }}</td>
-                        <td>{{ employee.surname }}</td>
-                        {% if employee.user.roles[0]=="ROLE_EMPLOYEE" %}
-                            <td>Pracownik administracyjny</td>
-                            <td>-</td>
-                            <td>-</td>
-                        {% elseif  employee.user.roles[0]=="ROLE_DOCTOR" %}
-                            <td>Lekarz</td>
-                            <td>{{ employee.doctor.specialization }}</td>
-                            <td>{{ employee.doctor.licenseNumber }}</td>
-                        {% else %}
-                            <td>Administrator systemu</td>
-                            <td>-</td>
-                            <td>-</td>
-                        {% endif %}
-                        <td><a href="{{ path('employee_edit',{employee: employee.id}) }}">
-                                <button class="btn btn-danger">Edytuj dane</button>
+                    <td>{{ employee.name }}</td>
+                    <td>{{ employee.surname }}</td>
+                    {% if employee.user.roles[0]=="ROLE_EMPLOYEE" %}
+                        <td>Pracownik administracyjny</td>
+                        <td>-</td>
+                        <td>-</td>
+                    {% elseif  employee.user.roles[0]=="ROLE_DOCTOR" %}
+                        <td>Lekarz</td>
+                        <td>{{ employee.doctor.specialization }}</td>
+                        <td>{{ employee.doctor.licenseNumber }}</td>
+                    {% else %}
+                        <td>Administrator systemu</td>
+                        <td>-</td>
+                        <td>-</td>
+                    {% endif %}
+                    <td>
+                        {% if employee.user.roles[0]=='ROLE_DOCTOR' %}
+                            <a href="{{ path('all_doctor_referrals',{doctor: employee.doctor.id}) }}">
+                                <button class="btn btn-green">skierowania</button>
                             </a>
-                            {% if employee.user.roles[0]=='ROLE_DOCTOR' %}
-                                <a href="{{ path('all_doctor_referrals',{doctor: employee.doctor.id}) }}">
-                                    <button class="btn btn-primary">skierowania</button>
-                                </a>
-                                <a href="{{ path('all_doctor_prescription_packages',{doctor: employee.doctor.id}) }}">
-                                    <button class="btn btn-primary">Recepty</button>
-                                </a>
-                            {% endif %}</td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-        </div>
-        <div class="container-fluid w-75">
-            <a href="{{ path('add_employee') }}">
-                <button class="btn btn-danger">Dodaj pracownika</button>
-            </a>
-            <a href="{{ path('add_doctor') }}">
-                <button class="btn btn-danger">Dodaj lekarza</button>
-            </a>
-        </div>
+                        {% else %}
+                            -
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if employee.user.roles[0]=='ROLE_DOCTOR' %}
+                            <a href="{{ path('all_doctor_prescription_packages',{doctor: employee.doctor.id}) }}">
+                                <button class="btn btn-green">Recepty</button>
+                            </a>
+                        {% else %}
+                            -
+                        {% endif %}
+                    </td>
+                    <td><a href="{{ path('employee_edit',{employee: employee.id}) }}">
+                            <button class="btn btn-green">Edytuj dane</button>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
     </div>
 {% endblock %}
