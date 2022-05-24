@@ -10,14 +10,14 @@
                     <img class="img-fluid" src="/images/male-ph.jpeg" alt="Card image cap">
                 </div>
                 <div class="col-md-8">
-                    <div class="card-body">
+                    <div class="card-body text-green">
                         <h5>{{ doctor }} </h5>
                         <h6>Numer prawa do wykonywania zawodu: {{ doctor.licenseNumber }}</h6>
                         <h6>Specializacja: {{ doctor.specialization }}</h6>
                         <p>{{ doctor.biography }}</p>
                         {% if is_granted("ROLE_DOCTOR") %}
                             <a href="{{ path('change_password') }}">
-                                <button class="btn btn-danger">Zmień Hasło</button>
+                                <button class="btn btn-green">Zmień Hasło</button>
                             </a>
                         {% endif %}
                     </div>
