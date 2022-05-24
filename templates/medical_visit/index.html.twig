@@ -4,9 +4,9 @@
 
 {% block body %}
     <div class="container-sm w-75">
-        <h1 class="text-center">Historia leczenia</h1>
-        <table class="table table-dark">
+        <table class="table table-green">
             <thead>
+            <tr><td colspan="8"><h1 class="text-center">Historia leczenia</h1></td></tr>
             <tr>
                 <th scope="col">Data</th>
                 <th scope="col">Lekarz</th>
@@ -30,14 +30,14 @@
                     {% if medicalVisit.prescriptionPackage != null %}
                         <td>
                             <a href="{{ path('prescription_package',{package: medicalVisit.prescriptionPackage.id}) }}">
-                                <button class="btn btn-primary">Recepta</button>
+                                <button class="btn btn-green">Recepta</button>
                             </a>
                         </td>
                     {% else %}
                         {% if is_granted('ROLE_DOCTOR') %}
                             <td>
                                 <a href="{{ path('add_prescription_package',{medicalVisit: medicalVisit.id}) }}">
-                                    <button class="btn btn-primary">Wystaw receptę</button>
+                                    <button class="btn btn-green">Wystaw receptę</button>
                                 </a>
                             </td>
                         {% else %}
@@ -47,14 +47,14 @@
                     {% if medicalVisit.referral != null %}
                         <td>
                             <a href="{{ path('referral',{referral: medicalVisit.referral.id}) }}">
-                                <button class="btn btn-primary">Skierowanie</button>
+                                <button class="btn btn-green">Skierowanie</button>
                             </a>
                         </td>
                     {% else %}
                         {% if is_granted('ROLE_DOCTOR') %}
                             <td>
                                 <a href="{{ path('add_referral',{medicalVisit: medicalVisit.id}) }}">
-                                    <button class="btn btn-primary">Wystaw skierowanie</button>
+                                    <button class="btn btn-green">Wystaw skierowanie</button>
                                 </a>
                             </td>
                         {% else %}

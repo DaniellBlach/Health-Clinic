@@ -4,20 +4,24 @@
 
 {% block body %}
     <div class="container-sm w-50">
-        <h1 class="text-center">Recepta</h1>
-        <table class="table table-dark">
+        <table class="table table-green">
             <thead>
+            <tr><td colspan="8"><h1 class="text-center">Recepta</h1></td></tr>
+            <tr>
+                <th colspan="2">Osoba wystawiająca receptę</th>
+                <td>{{ package.doctor }}</td>
+            </tr>
             <tr>
                 <th colspan="2">Data Wystawienia</th>
-                <th>{{ package.dateOfIssue|date("d/m/Y") }}</th>
+                <td>{{ package.dateOfIssue|date("d/m/Y") }}</td>
             </tr>
             <tr>
                 <th colspan="2">Data Ważności</th>
-                <th>{{ package.expirationDate|date("d/m/Y") }}</th>
+                <td>{{ package.expirationDate|date("d/m/Y") }}</td>
             </tr>
             <tr>
                 <th colspan="2">Klucz recepty</th>
-                <th>{{ package.packageKey }}</th>
+                <td>{{ package.packageKey }}</td>
             </tr>
             <tr>
                 <th colspan="3" class="text-center"><h4>Leki</h4></th>
@@ -26,16 +30,16 @@
             <tbody>
             {% for prescription in prescriptions %}
                 <tr>
-                    <td>Lek: {{ prescription.medicine }}</td>
-                    <td>Ilość opakowań: {{ prescription.quantity }}</td>
-                    <td>Klucz leku: {{ prescription.prescriptionKey }}</td>
+                    <td><b>Lek:</b> {{ prescription.medicine }}</td>
+                    <td><b>Ilość opakowań:</b> {{ prescription.quantity }}</td>
+                    <td><b>Klucz leku:</b> {{ prescription.prescriptionKey }}</td>
                 </tr>
             {% endfor %}
             </tbody>
         </table>
         {% if is_granted('ROLE_DOCTOR') %}
             <a href="{{ path('add_prescription',{prescriptionPackage: package.id}) }}">
-                <button class="btn btn-primary">Dodaj lek</button>
+                <button class="btn btn-green">Dodaj lek</button>
             </a>
         {% endif %}
     </div>

@@ -3,11 +3,10 @@
 {% block title %}Wszyscy pacjenci{% endblock %}
 
 {% block body %}
-    <div class="example-wrapper">
         <div class="container-sm w-50">
-            <h1 class="text-center">Pacjenci</h1>
-            <table class="table table-dark">
+            <table class="table table-green">
                 <thead>
+                <tr><td colspan="4"><h1 class="text-center">Pacjenci</h1></td></tr>
                 <tr>
                     <th scope="col">Imię</th>
                     <th scope="col">Nazwisko</th>
@@ -22,7 +21,7 @@
                         <td>{{ patient.surname }}</td>
                         <td>{{ patient.pesel }}</td>
                         <td><a href="{{ path('patient',{patient: patient.id}) }}">
-                                <button class="btn btn-danger">Zobacz Szczegóły</button>
+                                <button class="btn btn-green">Zobacz Szczegóły</button>
                             </a>
                             </td>
                     </tr>
@@ -30,5 +29,4 @@
                 </tbody>
             </table>
         </div>
-    </div>
 {% endblock %}

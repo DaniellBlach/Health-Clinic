@@ -4,13 +4,13 @@
 
 {% block body %}
     <div class="container w-25">
-        <h1 class="text-center">Badania krwi</h1>
-        <table class="table table-dark">
+        <table class="table table-green">
             <thead>
+            <tr><td colspan="3"><h1 class="text-center">Badania krwi</h1></td></tr>
             <tr>
                 <th scope="col">Data</th>
                 <th scope="col">Godzina pobrania</th>
-                <th scope="col"></th>
+                <th scope="col">Zobacz Szczegóły</th>
             </tr>
             </thead>
             <tbody>
@@ -18,8 +18,8 @@
                 <tr>
                     <td>{{ test.date|date("d/m/Y") }}</td>
                     <td>{{ test.time|date("H:i") }}</td>
-                    <td><a href="{{ path('test_details',{test: test.id}) }}">
-                            <button class="btn btn-primary">Zobacz wyniki Badań</button>
+                    <td colspan=""><a href="{{ path('test_details',{test: test.id}) }}">
+                            <button class="btn btn-green">Zobacz wyniki</button>
                         </a>
                     </td>
                 </tr>
