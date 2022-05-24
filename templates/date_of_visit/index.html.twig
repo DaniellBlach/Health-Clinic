@@ -4,9 +4,9 @@
 
 {% block body %}
     <div class="container-sm w-75">
-        <h1 class="text-center">Wizyty</h1>
-        <table class="table table-dark">
+        <table class="table table-green">
             <thead>
+            <tr><td colspan="8"><h1 class="text-center">Umówione terminy wizyt</h1></td></tr>
             <tr>
                 <th scope="col">Data</th>
                 <th scope="col">Godzina</th>
@@ -32,24 +32,24 @@
                             <td>{{ visit.time|date("h:i") }}</td>
                             <td>{{ visit.typeOfVisit }}</td>
                             <td>{{ visit.doctor }} <a href="{{ path('doctor',{doctor: visit.doctor.id}) }}">
-                                    <p class="">zobacz informacje o lekarzu</p>
+                                    <p style="color: #143900;text-decoration: underline"">zobacz informacje o lekarzu</p>
                                 </a></td>
                             <td>{{ visit.patient }}<a href="{{ path('patient',{patient: visit.patient.id}) }}">
-                                    <p class="">zobacz informacje o pacjencie</p>
+                                    <p style="color: #143900;text-decoration: underline">zobacz informacje o pacjencie</p>
                                 </a></td>
                         {% elseif app.user.employee!=null and app.user.employee.doctor==visit.doctor %}
                             <td>{{ visit.date|date("d/m/Y") }}</td>
                             <td>{{ visit.time|date("h:i") }}</td>
                             <td>{{ visit.typeOfVisit }}</td>
                             <td>{{ visit.patient }}<a href="{{ path('patient',{patient: visit.patient.id}) }}">
-                                    <p class="">zobacz informacje o pacjencie</p>
+                                    <p style="color: #143900;text-decoration: underline">zobacz informacje o pacjencie</p>
                                 </a></td>
                         {% elseif app.user.patient!=null and app.user.patient==visit.patient %}
                             <td>{{ visit.date|date("d/m/Y") }}</td>
                             <td>{{ visit.time|date("h:i") }}</td>
                             <td>{{ visit.typeOfVisit }}</td>
                             <td>{{ visit.doctor }} <a href="{{ path('doctor',{doctor: visit.doctor.id}) }}">
-                                    <p class="">zobacz informacje o lekarzu</p>
+                                    <p style="color: #143900;text-decoration: underline">zobacz informacje o lekarzu</p>
                                 </a></td>
                         {% endif %}
                     </tr>
@@ -57,13 +57,5 @@
             {% endfor %}
             </tbody>
         </table>
-        {% if is_granted("ROLE_EMPLOYEE") or is_granted("ROLE_ADMIN") %}
-            <a href="{{ path('available_visits') }}">
-                <button class="btn btn-dark">Dostępne wizyty</button>
-            </a>
-            <a href="{{ path('add_visits') }}">
-                <button class="btn btn-dark">Dodaj wizyty lekarskie</button>
-            </a>
-        {% endif %}
     </div>
 {% endblock %}

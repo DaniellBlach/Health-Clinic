@@ -3,39 +3,37 @@
 {% block title %}Dostępne terminy{% endblock %}
 
 {% block body %}
-    <div class="example-wrapper">
-        <div class="container-sm w-75">
-            <h1 class="text-center">Dostępne terminy wizyt</h1>
-            <table class="table table-dark">
-                <thead>
+    <div class="container-sm w-50">
+        <table class="table table-green">
+            <thead>
+            <td colspan="8"><h1 class="text-center">Terminy wizyt</h1></td>
+            <tr>
+                <th scope="col">Data</th>
+                <th scope="col">Godzina</th>
+                <th scope="col">Lekarz</th>
+                {% if is_granted("ROLE_PATIENT") %}
+                    <th scope="col">Umów wizytę</th>
+                {% endif %}
+            </tr>
+            </thead>
+            <tbody>
+            {% for visit in visits %}
                 <tr>
-                    <th scope="col">Data</th>
-                    <th scope="col">Godzina</th>
-                    <th scope="col">Lekarz</th>
+                    <td>{{ visit.date|date("d/m/Y") }}</td>
+                    <td>{{ visit.time|date("H:i") }}</td>
+                    <td>{{ visit.doctor }} <a href="{{ path('doctor',{doctor: visit.doctor.id}) }}">
+                            <p style="color: #143900;text-decoration: underline">zobacz informacje o lekarzu</p>
+                        </a></td>
                     {% if is_granted("ROLE_PATIENT") %}
-                        <th scope="col">Umów wizytę</th>
+                        <td>
+                            <a href="{{ path('sign_up',{visit: visit.id}) }}">
+                                <button class="btn btn-green">Umów wizytę</button>
+                            </a>
+                        </td>
                     {% endif %}
                 </tr>
-                </thead>
-                <tbody>
-                {% for visit in visits %}
-                    <tr>
-                        <td>{{ visit.date|date("d/m/Y") }}</td>
-                        <td>{{ visit.time|date("H:i") }}</td>
-                        <td>{{ visit.doctor }} <a href="{{ path('doctor',{doctor: visit.doctor.id}) }}">
-                                <p class="">zobacz informacje o lekarzu</p>
-                            </a></td>
-                        {% if is_granted("ROLE_PATIENT") %}
-                            <td>
-                                <a href="{{ path('sign_up',{visit: visit.id}) }}">
-                                    <button class="btn btn-danger">Umów wizytę</button>
-                                </a>
-                            </td>
-                        {% endif %}
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-        </div>
+            {% endfor %}
+            </tbody>
+        </table>
     </div>
 {% endblock %}
