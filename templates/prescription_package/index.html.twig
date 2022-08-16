@@ -3,13 +3,17 @@
 {% block title %}Recepta{% endblock %}
 
 {% block body %}
-    <div class="container-sm w-50">
+    <div class="container-sm w-25">
         <table class="table table-green">
             <thead>
             <tr><td colspan="8"><h1 class="text-center">Recepta</h1></td></tr>
             <tr>
                 <th colspan="2">Osoba wystawiająca receptę</th>
                 <td>{{ package.doctor }}</td>
+            </tr>
+            <tr>
+                <th colspan="2">Osoba na którą wystawiono receptę</th>
+                <td>{{ package.patient }}</td>
             </tr>
             <tr>
                 <th colspan="2">Data Wystawienia</th>
