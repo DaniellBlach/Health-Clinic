@@ -60,7 +60,7 @@ class Patient
     private $dateOfJoining;
 
     /**
-     * @ORM\ManyToOne(targetEntity=doctor::class)
+     * @ORM\ManyToOne(targetEntity=Doctor::class)
      */
     private $doctorOfFirstContact;
 
