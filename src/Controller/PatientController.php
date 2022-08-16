@@ -46,7 +46,7 @@ class PatientController extends AbstractController
             if ($this->isGranted('ROLE_ADMIN') or $this->isGranted('ROLE_EMPLOYEE')) {
                 return $this->redirectToRoute('patients');
             } else {
-                return $this->redirectToRoute('patient');
+                return $this->redirectToRoute('patient',['patient'=>$patient->getId()]);
             }
 
         }
