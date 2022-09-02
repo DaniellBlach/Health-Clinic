@@ -169,12 +169,12 @@ class Patient
         return $this;
     }
 
-    public function getDoctorOfFirstContact(): ?doctor
+    public function getDoctorOfFirstContact(): ?Doctor
     {
         return $this->doctorOfFirstContact;
     }
 
-    public function setDoctorOfFirstContact(?doctor $doctorOfFirstContact): self
+    public function setDoctorOfFirstContact(?Doctor $doctorOfFirstContact): self
     {
         $this->doctorOfFirstContact = $doctorOfFirstContact;
 
