@@ -2,12 +2,33 @@
 
 {% block title %}Strona główna!{% endblock %}
 {% block body %}
-    <div class="example-wrapper">
-        <a href="{{ path('app_login') }}">
-            <button class="btn btn-primary">Zaloguj się</button>
-        </a>
-        <a href="{{ path('register') }}">
-            <button class="btn btn-info">Zarejestruj się</button>
-        </a>
+    <div class="exaample-wrapper w-100">
+        {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+        <div class="d-flex justify-content-between">
+            <div  style="margin-top: 30px;margin-left: 20px">
+                <h1 class="text-green">Przychodnia lekarska</h1>
+            </div>
+            <div class="text-end" style="margin-top: 30px;margin-right: 80px">
+                <a href="{{ path('app_login') }}">
+                    <button class="btn btn-green" style="width: 150px">Zaloguj się</button>
+                </a>
+                <a href="{{ path('register') }}" class="text-center">
+                    <p class="text-green">Lub zarejestruj się</p>
+                </a>
+            </div>
+        </div>
+        {% endif %}
+        <div class="d-flex justify-content-center align-items-center mt-5">
+            <div class="col-4">
+                <img class="img-fluid " src="/images/index.svg" alt="login image" style="height: 400px">
+            </div>
+            <div class="col-4 mt-5 text-center" >
+                <p class="text-green" style="font-size: 20px">E-przychodnia to platforma, dzięki której możesz skorzystać z wirtualnych wizyt z
+                    wybranym specjalistą. Coraz więcej pacjentów zaczyna proaktywnie korzystać z technologii zarządzania
+                    swoim zdrowiem, przez co są również bardziej otwarci na alternatywne sposoby uzyskania opieki -
+                    poprzez telemedycynę. Sprawdź, który z dostępnych na naszych platformach e-Przychodni specjalistów
+                    pomoże rozwiązać Twój problem zdrowotny!</p>
+            </div>
+        </div>
     </div>
 {% endblock %}
