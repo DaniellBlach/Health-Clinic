@@ -18,6 +18,7 @@
         "scheb/2fa-email": "^5.13",
         "scheb/2fa-trusted-device": "^5.13",
         "sensio/framework-extra-bundle": "^6.1",
+        "symfony/apache-pack": "^1.0",
         "symfony/asset": "5.3.*",
         "symfony/console": "5.3.*",
         "symfony/expression-language": "5.3.*",
