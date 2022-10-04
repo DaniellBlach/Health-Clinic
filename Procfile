@@ -1,1 +1,1 @@
-眧扥›敨潲畫瀭灨愭慰档㉥瀠扵楬⽣‧਍
+web: vendor/bin/heroku-php-apache2 public/
