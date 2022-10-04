@@ -28,7 +28,7 @@ class Doctor
     private $licenseNumber;
 
     /**
-     * @ORM\OneToOne(targetEntity=employee::class, inversedBy="doctor", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=Employee::class, inversedBy="doctor", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false,onDelete="CASCADE")
      */
     private $employee;
@@ -67,12 +67,12 @@ class Doctor
         return $this;
     }
 
-    public function getEmployee(): ?employee
+    public function getEmployee(): ?Employee
     {
         return $this->employee;
     }
 
-    public function setEmployee(employee $employee): self
+    public function setEmployee(Employee $employee): self
     {
         $this->employee = $employee;
 
