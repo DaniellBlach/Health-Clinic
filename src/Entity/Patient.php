@@ -60,7 +60,7 @@ class Patient
     private $dateOfJoining;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Doctor::class)
+     * @ORM\ManyToOne(targetEntity=doctor::class)
      */
     private $doctorOfFirstContact;
 
@@ -169,12 +169,12 @@ class Patient
         return $this;
     }
 
-    public function getDoctorOfFirstContact(): ?Doctor
+    public function getDoctorOfFirstContact(): ?doctor
     {
         return $this->doctorOfFirstContact;
     }
 
-    public function setDoctorOfFirstContact(?Doctor $doctorOfFirstContact): self
+    public function setDoctorOfFirstContact(?doctor $doctorOfFirstContact): self
     {
         $this->doctorOfFirstContact = $doctorOfFirstContact;
 
