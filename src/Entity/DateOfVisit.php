@@ -33,7 +33,7 @@ class DateOfVisit
     private $time;
 
     /**
-     * @ORM\ManyToOne(targetEntity=doctor::class)
+     * @ORM\ManyToOne(targetEntity=Doctor::class)
      * @ORM\JoinColumn(nullable=false)
      */
     private $doctor;
@@ -84,12 +84,12 @@ class DateOfVisit
         return $this;
     }
 
-    public function getDoctor(): ?doctor
+    public function getDoctor(): ?Doctor
     {
         return $this->doctor;
     }
 
-    public function setDoctor(?doctor $doctor): self
+    public function setDoctor(?Doctor $doctor): self
     {
         $this->doctor = $doctor;
 
