@@ -73,7 +73,7 @@ class EmployeeController extends AbstractController
 
     /**
      * @Route("/employees", name="employees")
-     * @IsGranted({"ROLE_ADMIN","ROLE_EMPLOYEE"})
+     * @Security("is_granted('ROLE_ADMIN') and is_granted('ROLE_EMPLOYEE')")
      * @param Request $request
      * @return Response
      */
