@@ -73,11 +73,11 @@ class EmployeeController extends AbstractController
 
     /**
      * @Route("/employees", name="employees")
-     * @IsGranted("ROLE_ADMIN")
+     * @IsGranted({"ROLE_ADMIN","ROLE_EMPLOYEE"})
      * @param Request $request
      * @return Response
      */
-    public function allPatients(Request $request): Response
+    public function allEmployees(Request $request): Response
     {
         $repository = $this->getDoctrine()->getRepository(Employee::class);
         return $this->render('employee/employees.html.twig', [
