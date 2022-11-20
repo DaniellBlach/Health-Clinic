@@ -36,6 +36,10 @@ body {
     background-color: #143900;
     box-shadow: 0 4px 30px rgba(27, 74, 1, 0.2);
   }
+  &:active{
+    border-color: #1b4a01 !important;
+    color: #1b4a01 !important;
+  }
 }
 
 .text-green {
